@@ -4,7 +4,7 @@ import '../assets/styles/Header.scss';
 const Header = () => {
   return (
     <header className='header'>
-      <img className='header__img' src='logopos.png' alt='user' />
+      <img className='header__img' src='src/assets/images/logopos.png' alt='user' />
       <div className='header__information'>
         <a href='/'>Inicio</a>
         <a href='/'>Planes</a>
@@ -17,7 +17,7 @@ const Header = () => {
       </div>
       <div className='header__menu'>
         <div className='header__menu--profile'>
-          <img src='./icons8-usuario-masculino-30.png' alt='user' />
+          <img src='src/assets/images/icons8-usuario-masculino-30.png' alt='user' />
           <p>Perfil</p>
         </div> 
         <ul>
