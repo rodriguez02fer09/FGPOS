@@ -9,6 +9,19 @@ body {
   flex-direction: column;
 }
 
+* {
+  box-sizing: border-box;
+}
+
+.no-select {
+  -webkit-touch-callout: none;
+  -webkit-user-select: none;
+  -khtml-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+  user-select: none;
+}
+
 #app,
 .Layout {
   height: 100%;

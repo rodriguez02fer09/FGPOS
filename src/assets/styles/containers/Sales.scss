@@ -1,0 +1,17 @@
+#salesItems {
+    width: 80%;
+}
+
+#salesCart {
+    width: 20%;
+    border-left: 1px solid #dee2e6;
+    background-color: white;
+    display: flex;
+    flex-direction: column;
+}
+
+#salesItemsHeader {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}

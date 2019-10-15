@@ -1,0 +1,22 @@
+.item {
+    margin: 20px 0px 0px 20px;
+    display: inline-table;
+    // width: 21%;
+
+    img {
+        cursor: pointer;
+        display: block;
+        margin-left: auto;
+        margin-right: auto;
+        width: 212px;
+        height: 212px;
+        border-radius: 0.25rem;
+        box-shadow: 0 1rem 3rem rgba(0, 0, 0, 0.175) !important;
+        object-fit: cover;
+    }
+
+    h4 {
+        margin-top: 6px;
+        margin-bottom: 5px;
+    }
+}
