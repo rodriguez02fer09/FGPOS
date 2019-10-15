@@ -17,3 +17,8 @@ export const deleteCart = payload => ({
     type: 'DELETE_CART',
     payload,
 });
+
+export const LoginRequest = payload => ({
+  type: "LOGIN_REQUEST",
+  payload
+});

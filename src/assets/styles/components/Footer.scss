@@ -1,19 +1,20 @@
+@import "../Vars.scss";
+
 .footer {
-    display: flex;
-    text-align: center;
-    justify-content: space-between;
-    text-decoration: none;
-    color: black;
-    height: 40px;
-    background-color: white;
-    padding: 20px;
-  }
-  
-  .footer a {
-    text-decoration: none;
-    color: black;
-  }
-  
-  .footer a:hover {
-    text-decoration: underline;
-  }
+  display: flex;
+  text-align: center;
+  justify-content: space-between;
+  text-decoration: none;
+  height: 25px;
+  background-color: $primary-color;
+  padding: 20px;
+}
+
+.footer a {
+  text-decoration: none;
+  color: white;
+}
+
+.footer a:hover {
+  text-decoration: underline;
+}

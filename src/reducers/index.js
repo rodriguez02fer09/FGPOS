@@ -55,6 +55,11 @@ const reducer = (state, action) => {
                 cartItems
             }
         }
+        case "LOGIN_REQUEST":
+          return {
+            ...state,
+            user: action.payload
+        };
         case 'DELETE_CART':
             return {
                 ...state,

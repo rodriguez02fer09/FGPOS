@@ -13,6 +13,7 @@
   "license": "MIT",
   "private": false,
   "dependencies": {
+    "normalize.css": "^8.0.1",
     "prop-types": "^15.7.2",
     "react": "^16.10.1",
     "react-dom": "^16.10.1",
@@ -26,6 +27,7 @@
     "@babel/preset-react": "^7.0.0",
     "babel-eslint": "^10.0.3",
     "babel-loader": "^8.0.6",
+    "babel-plugin-transform-class-properties": "^6.24.1",
     "css-loader": "^3.2.0",
     "eslint": "^6.5.1",
     "eslint-config-airbnb": "^18.0.1",

@@ -1,3 +1,4 @@
+
 import React from 'react';
 import { BrowserRouter, Switch, Route } from 'react-router-dom';
 import Home from '../containers/Home';
@@ -6,6 +7,7 @@ import Layout from '../components/Layout';
 import '../assets/styles/App.scss';
 import DashboardLayout from '../components/DashboardLayout';
 import Sales from '../containers/Sales';
+import LoginContainer from "../containers/Login";
 
 const AppRoute = ({ component: Component, layout: Layout, ...rest }) => (
   <Route
@@ -21,15 +23,15 @@ const AppRoute = ({ component: Component, layout: Layout, ...rest }) => (
 const App = () => (
   <BrowserRouter>
     <Switch>
-      <AppRoute exact path="/" layout={Layout} component={Home} />{' '}
+      <AppRoute exact path="/" layout={Layout} component={LoginContainer} />
       <AppRoute
         exact
         path="/sales"
         layout={DashboardLayout}
         component={Sales}
-      />{' '}
-      <AppRoute layout={Layout} component={NotFound} />{' '}
-    </Switch>{' '}
+      />
+      <AppRoute layout={Layout} component={NotFound} />
+    </Switch>
   </BrowserRouter>
 );
 
