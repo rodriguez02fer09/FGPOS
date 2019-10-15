@@ -1,16 +1,14 @@
-import React from "react";
-import { connect } from "react-redux";
-
-import { LoginRequest } from "../actions";
-
-import "../assets/styles/components/Login.scss";
+import React from 'react';
+import { connect } from 'react-redux';
+import { LoginRequest } from '../actions';
+import '../assets/styles/components/Login.scss';
 
 class Login extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
-      email: "",
-      password: ""
+      email: '',
+      password: ''
     };
 
     this.handleChange = this.handleChange.bind(this);
@@ -33,7 +31,7 @@ class Login extends React.Component {
     return (
       <section className="login_container">
         <section className="login">
-          <h2>Iniciar Sesión</h2>
+          <h2>Iniciar sesión</h2>
           <form className="login__container--form">
             <input
               className="input"
@@ -66,14 +64,14 @@ class Login extends React.Component {
                 src="https://img.icons8.com/ios/50/000000/google-plus.png"
                 alt="google"
               />
-              Iniciar seciòn con google
+              Iniciar sesión con google
             </div>
             <div>
               <img
                 src="https://img.icons8.com/color/48/000000/twitter.png"
                 alt="twitter"
               />
-              Iniciar seciòn con twitter
+              Iniciar sesión con twitter
             </div>
           </section>
 

@@ -1,10 +1,13 @@
-import React from "react";
-import "../assets/styles/components/Header.scss";
+import React from 'react';
+import { Link } from 'react-router-dom';
+import '../assets/styles/components/Header.scss';
 
 const Header = () => {
   return (
     <header className="header">
-      <div className="header__logo">FGPOS</div>
+      <Link to="/">
+        <div className="header__logo">FGPOS</div>
+      </Link>
       <div className="header__information">
         <a href="/">Inicio</a>
         <a href="/">Planes</a>
@@ -16,18 +19,9 @@ const Header = () => {
         />
       </div>
       <div className="header__menu">
-        <div className="header__menu--profile">
-          <img src="" alt="user" />
-          <p>Perfil</p>
-        </div>
-        <ul>
-          <li>
-            <a href="/">Cuenta</a>
-          </li>
-          <li>
-            <a href="/">Cerrar Sesión</a>
-          </li>
-        </ul>
+        <Link to="/login">
+          <i className="fas fa-sign-in-alt fa-lg"></i>
+        </Link>
       </div>
     </header>
   );
