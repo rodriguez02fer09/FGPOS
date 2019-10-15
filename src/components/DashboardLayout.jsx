@@ -5,7 +5,7 @@ const DashboardLayout = ({ children }) => (
   <div id="mainContainer">
     <aside id="dashboardAside">
       <div id="headerMenuButtonContainer" className="h-6 border-bottom">
-        <button className="button button-invisible">
+        <button className="dashboard-button button-white">
           <i className="fas fa-bars"></i>
         </button>
       </div>
