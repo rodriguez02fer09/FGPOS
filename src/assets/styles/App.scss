@@ -2,9 +2,21 @@
 
 body {
   margin: 0;
+  color: white;
   font-family: $theme-font;
+  background-color: $color-background;
+  display: flex;
+  flex-direction: column;
 }
 
-* {
-  box-sizing: border-box;
+#app,
+.Layout {
+  height: 100%;
+  width: 100%;
+  margin: auto;
+  position: absolute;
+  left: 0px;
+  top: 0px;
+  right: 0px;
+  bottom: 0px;
 }
