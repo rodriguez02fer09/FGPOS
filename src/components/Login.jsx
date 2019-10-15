@@ -33,7 +33,7 @@ class Login extends React.Component {
     return (
       <section className="login_container">
         <section className="login">
-          <h2>Iniciar Sesiòn</h2>
+          <h2>Iniciar Sesión</h2>
           <form className="login__container--form">
             <input
               className="input"
