@@ -1,14 +1,14 @@
-import React from 'react';
-import { connect } from 'react-redux';
-import { LoginRequest } from '../actions';
-import '../assets/styles/components/Login.scss';
+import React from "react";
+import { connect } from "react-redux";
+import { LoginRequest } from "../actions";
+import "../assets/styles/components/Login.scss";
 
 class Login extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
-      email: '',
-      password: ''
+      email: "",
+      password: ""
     };
 
     this.handleChange = this.handleChange.bind(this);
@@ -47,7 +47,7 @@ class Login extends React.Component {
               placeholder="Contraseña"
               onChange={this.handleChange}
             />
-            <button className="button" onClick={this.submitForm}>
+            <button className="btn-login" onClick={this.submitForm}>
               Iniciar sesión
             </button>
             <div className="login__container--remember-me">

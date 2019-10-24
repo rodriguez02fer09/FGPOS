@@ -1,18 +1,20 @@
-import React from 'react';
-import { BrowserRouter, Switch, Route } from 'react-router-dom';
-import NotFound from '../containers/NotFound';
-import Layout from '../components/Layout';
-import '../assets/styles/App.scss';
-import DashboardLayout from '../components/DashboardLayout';
-import Sales from '../containers/Sales';
-import LoginContainer from '../containers/Login';
+import React from "react";
+import { BrowserRouter, Switch, Route } from "react-router-dom";
+import NotFound from "../containers/NotFound";
+import Layout from "../components/Layout";
+import "../assets/styles/App.scss";
+import DashboardLayout from "../components/DashboardLayout";
+import RegisterLayout from "../components/RegisterLayout";
+import Sales from "../containers/Sales";
+import LoginContainer from "../containers/Login";
+import RegisterContainer from "../containers/Register";
 
 const AppRoute = ({ component: Component, layout: Layout, ...rest }) => (
   <Route
     {...rest}
     render={props => (
       <Layout>
-        <Component {...props} />{' '}
+        <Component {...props} />{" "}
       </Layout>
     )}
   />
@@ -33,6 +35,12 @@ const App = () => (
         path="/login"
         layout={Layout}
         component={LoginContainer}
+      />
+      <AppRoute
+        exact
+        path="/register"
+        layout={RegisterLayout}
+        component={RegisterContainer}
       />
       <AppRoute layout={Layout} component={NotFound} />
     </Switch>
