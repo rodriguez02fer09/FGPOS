@@ -34,18 +34,18 @@
   border-radius: 5px;
 }
 
-.button {
+.btn-login {
   height: 40px;
   width: 100%;
   font-size: 18px;
-  background-color: $second-color;
+  background-color: #26a89e;
   color: white;
   cursor: pointer;
   border-radius: 5px;
 }
 
-.button:hover {
-  background-color: $primary-color;
+.btn-login:hover {
+  background-color: #435867;
 }
 
 .login__container--remember-me {
@@ -58,7 +58,7 @@
   text-decoration: none;
 }
 
-.login__container--social-media>div {
+.login__container--social-media > div {
   align-items: center;
   display: flex;
   font-size: 14px;
