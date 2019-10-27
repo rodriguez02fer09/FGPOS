@@ -1,0 +1,8 @@
+#ProductList {
+  display: flex;
+  background-color: whitesmoke;
+  height: calc(100vh - 47.6px);
+  overflow-y: scroll;
+  flex-wrap: wrap;
+  padding-bottom: 20px;
+}
