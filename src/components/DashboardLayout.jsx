@@ -2,7 +2,7 @@ import React from 'react';
 import '../assets/styles/components/DashboardLayout.scss';
 
 const DashboardLayout = ({ children }) => (
-  <div id="mainContainer">
+  <div id="dashboardMainContainer">
     <aside id="dashboardAside">
       <div id="headerMenuButtonContainer" className="h-6 border-bottom">
         <button className="dashboard-button button-white">
