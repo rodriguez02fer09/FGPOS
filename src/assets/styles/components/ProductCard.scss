@@ -28,3 +28,9 @@
 .ProductCard:hover {
   background-color: #e2e2e2;
 }
+
+.ReactModal__Content.ReactModal__Content--after-open {
+  h2 {
+    color: peru;
+  }
+}
