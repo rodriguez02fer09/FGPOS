@@ -75,7 +75,4 @@ const mapDispatchToProps = {
   addToCart
 };
 
-export default connect(
-  null,
-  mapDispatchToProps
-)(ProductCard);
+export default connect(null, mapDispatchToProps)(ProductCard);
