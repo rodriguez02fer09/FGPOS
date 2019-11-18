@@ -2,7 +2,7 @@ import React from 'react';
 import { BrowserRouter, Switch, Route } from 'react-router-dom';
 import NotFound from '../containers/NotFound';
 import DashboardLayout from '../components/DashboardLayout';
-// import RegisterLayout from "../components/RegisterLayout";
+import MainLayout from '../components/MainLayout';
 import Sales from '../containers/Sales';
 import Login from '../containers/Login';
 import Register from '../containers/Register';
@@ -22,9 +22,19 @@ const AppRoute = ({ component: Component, layout: Layout, ...rest }) => (
 const App = ({ isLogged }) => (
   <BrowserRouter>
     <Switch>
-      <Route exact path='/' component={isLogged ? Sales : Login} />
-      <Route exact path='/login' component={Login} />
-      <Route exact path='/register' component={Register} />
+      <AppRoute exact path='/' component={isLogged ? Sales : Login} layout={isLogged ? DashboardLayout : MainLayout} />
+      <AppRoute
+        exact
+        path='/login'
+        layout={MainLayout}
+        component={Login}
+      />
+      <AppRoute
+        exact
+        path='/register'
+        layout={MainLayout}
+        component={Register}
+      />
       <AppRoute
         exact
         path='/sales'

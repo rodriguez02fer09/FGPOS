@@ -1,0 +1,63 @@
+.layout-navbar {
+    text-align: right;
+    padding: 1rem 1rem;
+    height: 10vh;
+
+    a {
+        margin: 0rem 0.5rem;
+        border: 3px transparent solid;
+        text-decoration: none;
+        display: inline-block;
+        font-weight: 400;
+        color: #212529;
+        text-align: center;
+        vertical-align: middle;
+        -webkit-user-select: none;
+        -moz-user-select: none;
+        -ms-user-select: none;
+        user-select: none;
+        background-color: transparent;
+        padding: 0.375rem 0.75rem;
+        font-size: 1rem;
+        line-height: 1.5;
+        border-radius: 0.25rem;
+        transition: color 0.15s ease-in-out, background-color 0.2s ease-in-out, border-color 0.2s ease-in-out, box-shadow 0.15s ease-in-out;
+    }
+
+    a.active {
+        border-color: rgb(240, 240, 240);
+    }
+}
+
+.layout-container {
+    display: flex;
+    height: 83vh;
+    max-height: 83vh;
+    width: 100%;
+}
+
+.layout-children {
+    background-color: red;
+    width: 35%;
+}
+
+.layout-information {
+    background-color: blue;
+    width: 65%;
+}
+
+.layout-privacy {
+    display: flex;
+    height: 7vh;
+    justify-content: space-between;
+    padding: 1rem;
+
+    a {
+        color: black;
+        text-decoration: none;
+    }
+
+    a:hover {
+        text-decoration: underline;
+    }
+}

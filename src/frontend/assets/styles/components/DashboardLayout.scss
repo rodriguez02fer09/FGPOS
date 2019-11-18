@@ -26,17 +26,17 @@
       font-size: 20px;
       cursor: pointer;
       padding: 10px;
-      color: #b9d7ea;
+      color: $primary-color;
       transition: 0.2s;
     }
 
     li:hover {
-      color: #769fcd;
+      color: $secondary-color;
     }
 
     a.active li {
-      background-color: #d6e6f2;
-      color: #769fcd;
+      background-color: $third-color;
+      color: $secondary-color;
     }
   }
 }
