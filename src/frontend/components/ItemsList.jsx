@@ -11,7 +11,7 @@ const ItemsList = ({ items }) => {
           key={item.id}
           id={item.id}
           name={item.name}
-          price={item.price}
+          price={item.clientPrice}
           image={item.image}
         />
       ))}
