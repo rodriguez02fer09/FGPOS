@@ -74,8 +74,7 @@ module.exports = {
             options: {
               data: `
                 @import 'src/frontend/assets/styles/Vars.scss';
-                @import 'src/frontend/assets/styles/Media.scss';
-                @import 'src/frontend/assets/styles/Base.scss';
+                @import 'src/frontend/assets/styles/App.scss';
               `,
             },
           },

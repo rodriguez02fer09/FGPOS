@@ -4,7 +4,7 @@ let files = false;
 if (process.env.NODE_ENV !== 'development') files = getManifest();
 
 const render = (html, preloadedState) => {
-    return (`
+  return (`
   <!DOCTYPE html>
     <html>
     <head>
@@ -14,6 +14,7 @@ const render = (html, preloadedState) => {
       <meta author="Fernanda Rodriguez & Gabriel Pinto">
       <meta description="Sistema de ventas innovador y único">
       <title>FG Pos</title>
+      <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Muli&display=swap">
       <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.9.0/css/all.css" crossorigin="anonymous">
       <link rel="stylesheet" href="${files ? files['main.css'] : 'assets/app.css'}" type="text/css"></link>
     </head>
