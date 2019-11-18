@@ -1,0 +1,36 @@
+.ProductCard {
+  margin: 20px 0px 0px 20px;
+  display: inline-table;
+  border: 1px solid white;
+  padding: 5px;
+  border-radius: 5px;
+  background-color: white;
+  cursor: pointer;
+
+  img {
+    cursor: pointer;
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+    width: 212px;
+    height: 212px;
+    border-radius: 0.25rem;
+    box-shadow: 0 1rem 3rem rgba(0, 0, 0, 0.175) !important;
+    object-fit: cover;
+  }
+
+  h4 {
+    margin-top: 6px;
+    margin-bottom: 5px;
+  }
+}
+
+.ProductCard:hover {
+  background-color: #e2e2e2;
+}
+
+.ReactModal__Content.ReactModal__Content--after-open {
+  h2 {
+    color: #00909e;
+  }
+}

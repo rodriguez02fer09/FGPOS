@@ -8,6 +8,7 @@ import RegisterLayout from "../components/RegisterLayout";
 import Sales from "../containers/Sales";
 import LoginContainer from "../containers/Login";
 import RegisterContainer from "../containers/Register";
+import Inventory from "../containers/Inventory";
 
 const AppRoute = ({ component: Component, layout: Layout, ...rest }) => (
   <Route
@@ -41,6 +42,12 @@ const App = () => (
         path="/register"
         layout={RegisterLayout}
         component={RegisterContainer}
+      />
+      <AppRoute
+        exact
+        path="/inventory"
+        layout={DashboardLayout}
+        component={Inventory}
       />
       <AppRoute layout={Layout} component={NotFound} />
     </Switch>
