@@ -12,9 +12,7 @@ const MainLayout = ({ children }) => (
       <div className="layout-children">
         {children}
       </div>
-      <div className="layout-information">
-
-      </div>
+      <div className="layout-information" />
     </div>
     <div className="layout-privacy">
       <a href="/">Términos de uso</a>

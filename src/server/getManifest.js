@@ -1,4 +1,5 @@
 import fs from 'fs';
+
 require('dotenv').config();
 
 const getManifest = () => {

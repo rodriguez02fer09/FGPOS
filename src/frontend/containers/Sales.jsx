@@ -8,15 +8,15 @@ class Sales extends React.Component {
   render() {
     return (
       <>
-        <div id='salesItems'>
-          <div id='salesItemsHeader' className='h-6 border-bottom bg-white'>
+        <div id="salesItems">
+          <div id="salesItemsHeader" className="h-6 border-bottom bg-white">
             <div />
-            <h3 className='mb-0'>Ventas</h3>
+            <h3 className="mb-0">Ventas</h3>
             <SalesSearch />
           </div>
-          <ItemsList />
+          <ItemsList available={true} />
         </div>
-        <div id='salesCart'>
+        <div id="salesCart">
           <SalesCart />
         </div>
       </>
