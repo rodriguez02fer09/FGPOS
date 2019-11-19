@@ -7,10 +7,10 @@ class Inventory extends React.Component {
   render() {
     return (
       <>
-        <div id='salesItems'>
-          <div id='salesItemsHeader' className='h-6 border-bottom bg-white'>
+        <div id="salesItems">
+          <div id="salesItemsHeader" className="h-6 border-bottom bg-white">
             <div />
-            <h3 className='mb-0'>Inventario</h3>
+            <h3 className="mb-0">Inventario</h3>
             <SalesSearch />
           </div>
           <ProductList />

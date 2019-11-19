@@ -4,16 +4,22 @@ import { addToCart } from '../actions';
 import '../assets/styles/components/Item.scss';
 
 const Item = (props) => {
-  const { id, image, name, price, addToCart } = props;
+  const { id, image, name, price, addToCart, units } = props;
 
   const addItemToCart = () => {
-    addToCart({ id, image, name, price, quantity: 1 });
+    addToCart({ id, image, name, price, quantity: 1, units });
   };
 
   return (
     <div className="item" onClick={addItemToCart} role="listitem">
       <img src={image} alt={name} />
-      <h4>{name}</h4>
+      <h4>
+        {name}
+        {' '}
+(
+        {units}
+)
+      </h4>
       <h5>
         $
         {' '}

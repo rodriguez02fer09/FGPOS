@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import { connect } from 'react-redux';
-import { registerUser } from '../actions';
+import { registerRequest } from '../actions';
 import '../assets/styles/containers/Register.scss';
 
 const Register = (props) => {
@@ -19,7 +19,7 @@ const Register = (props) => {
 
   const handleSubmit = (event) => {
     event.preventDefault();
-    props.registerUser(form, '/login');
+    props.registerRequest(form, '/login');
   };
 
   return (
@@ -34,7 +34,8 @@ const Register = (props) => {
           onChange={handleInput}
           required
         />
-        <input type="email"
+        <input
+          type="email"
           placeholder="Correo"
           onChange={handleInput}
           required
@@ -45,19 +46,21 @@ const Register = (props) => {
           onChange={handleInput}
           required
         />
-        <button className="submit">
+        <button className="submit" type="submit">
           Crear cuenta
         </button>
       </form>
       <p className="register__container--login">
-        ¿Ya tienes una cuenta? <span onClick={() => props.history.push('/login')}>Inicia sesión</span>
+        ¿Ya tienes una cuenta?
+        {' '}
+        <span role="listitem" onClick={() => props.history.push('/login')}>Inicia sesión</span>
       </p>
     </section>
   );
 };
 
 const mapDispatchToProps = {
-  registerUser,
+  registerRequest,
 };
 
 export default connect(null, mapDispatchToProps)(Register);

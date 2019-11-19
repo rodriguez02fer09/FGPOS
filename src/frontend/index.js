@@ -13,8 +13,7 @@ if (typeof window !== 'undefined') {
   let composeEnhacers;
   if (prod) {
     composeEnhacers = compose;
-  }
-  else {
+  } else {
     composeEnhacers = window.__REDUX_DEVTOOLS_EXTENSION_COMPOSE__ || compose;
   }
   const preloadedState = window.__PRELOADED_STATE__;
