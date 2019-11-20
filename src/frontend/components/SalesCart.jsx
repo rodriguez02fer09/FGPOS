@@ -1,13 +1,18 @@
 import React from 'react';
 import { connect } from 'react-redux';
-import { deleteCart } from '../actions';
+import { deleteCart, showCartCheckoutModal } from '../actions';
 import '../assets/styles/components/SalesCart.scss';
 import SalesCartItem from './SalesCartItem';
 import emptyCart from '../assets/static/logos/empty-cart.png';
+import SalesCartCheckoutModal from './SalesCartCheckoutModal';
 
-const SalesCart = ({ cartItems, cartTotalPrice, deleteCart }) => {
+const SalesCart = ({ cartItems, cartTotalPrice, deleteCart, showCartCheckoutModal, show }) => {
   const handleDeleteCart = () => {
     deleteCart();
+  };
+
+  const handleShowCartCheckoutModal = () => {
+    showCartCheckoutModal();
   };
 
   return (
@@ -44,7 +49,7 @@ const SalesCart = ({ cartItems, cartTotalPrice, deleteCart }) => {
               {cartTotalPrice}
             </h4>
           </div>
-          <button className="sales-cart-button button-success" type="button">Pagar</button>
+          <button className="sales-cart-button button-success" type="button" onClick={() => handleShowCartCheckoutModal()}>Pagar</button>
           <button
             className="sales-cart-button button-danger"
             type="button"
@@ -52,6 +57,7 @@ const SalesCart = ({ cartItems, cartTotalPrice, deleteCart }) => {
           >
             Vaciar carrito
           </button>
+          {show && <SalesCartCheckoutModal />}
         </>
       )}
     </>
@@ -62,11 +68,13 @@ const mapStateToProps = (state) => {
   return {
     cartItems: state.cartItems,
     cartTotalPrice: state.cartTotalPrice,
+    show: state.showCartCheckoutModal,
   };
 };
 
 const mapDispatchToProps = {
   deleteCart,
+  showCartCheckoutModal,
 };
 
 export default connect(

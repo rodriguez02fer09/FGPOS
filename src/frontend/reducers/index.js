@@ -5,16 +5,21 @@ const reducer = (state, action) => {
         cartItems,
       } = state;
       const index = cartItems.findIndex(item => action.payload.id === item.id);
-      if (index !== -1) {
+      let add = true;
+      if (index !== -1 && cartItems[index].quantity < cartItems[index].units) {
         cartItems[index].quantity++;
-      } else {
+      } else if (index === -1) {
         cartItems = [action.payload, ...cartItems];
+      } else {
+        add = false;
       }
+
       return {
         ...state,
-        cartTotalPrice: state.cartTotalPrice + action.payload.price,
+        cartTotalPrice: add ? state.cartTotalPrice + action.payload.price : state.cartTotalPrice,
         cartItems,
       };
+
     }
     case 'INCREASE_CART_ITEM_COUNT': {
       const {
@@ -24,7 +29,7 @@ const reducer = (state, action) => {
         cartTotalPrice,
       } = state;
       const index = cartItems.findIndex(item => action.payload === item.id);
-      if (index !== -1) {
+      if (index !== -1 && cartItems[index].quantity < cartItems[index].units) {
         cartItems[index].quantity++;
         cartTotalPrice += cartItems[index].price;
       }
@@ -62,11 +67,44 @@ const reducer = (state, action) => {
         ...state,
         user: action.payload,
       };
+    case 'SHOW_CART_CHECKOUT_MODAL':
+      return {
+        ...state,
+        showCartCheckoutModal: true,
+      };
+    case 'HIDE_CART_CHECKOUT_MODAL':
+      return {
+        ...state,
+        showCartCheckoutModal: false,
+      };
     case 'DELETE_CART':
       return {
         ...state,
         cartTotalPrice: 0,
         cartItems: [],
+      };
+    case 'START_PAYMENT':
+      return {
+        ...state,
+        makingPayment: true,
+      };
+    case 'END_PAYMENT':
+      return {
+        ...state,
+        makingPayment: false,
+        showCartCheckoutModal: false,
+      };
+    case 'RESET_PRODUCTS':
+      return {
+        ...state,
+        loading: true,
+        products: [],
+      };
+    case 'STORE_LOADED_PRODUCTS':
+      return {
+        ...state,
+        loading: false,
+        products: action.payload,
       };
     default:
       return state;

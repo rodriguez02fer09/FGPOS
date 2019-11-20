@@ -25,9 +25,11 @@ require('./utils/auth/strategies/basic');
 
 if (ENV === 'development') {
   console.log('Loading dev config');
+  /* eslint-disable global-require */
   const webpackConfig = require('../../webpack.config');
   const webpackDevMiddleware = require('webpack-dev-middleware');
   const webpackHotMiddleware = require('webpack-hot-middleware');
+  /* eslint-enable global-require */
   const compiler = webpack(webpackConfig);
   const serverConfig = {
     contentBase: `http://localhost:${PORT}`,
@@ -36,7 +38,7 @@ if (ENV === 'development') {
     hot: true,
     historyApiFallback: true,
     stats: {
-      colors: true
+      colors: true,
     },
   };
   app.use(webpackDevMiddleware(compiler, serverConfig));
@@ -56,7 +58,7 @@ app.post('/auth/sign-in', async (req, res, next) => {
       }
 
       req.login(data, {
-        session: false
+        session: false,
       }, async (error) => {
         if (error) {
           next(error);
@@ -81,7 +83,7 @@ app.post('/auth/sign-in', async (req, res, next) => {
 
 app.post('/auth/sign-up', async (req, res, next) => {
   const {
-    body: user
+    body: user,
   } = req;
   try {
     const userData = await axios({
@@ -97,6 +99,70 @@ app.post('/auth/sign-up', async (req, res, next) => {
   } catch (error) {
     next(error);
   }
+});
+
+app.get('/api/products', async (req, res, next) => {
+  const {
+    token,
+  } = req.cookies;
+
+  axios.get(`${process.env.API_URL}/api/products`, {
+    headers: {
+      Authorization: `Bearer ${token}`,
+    },
+  }).then(({
+    data,
+    status,
+  }) => {
+    res.status(status).json(data);
+  }).catch((err) => {
+    console.log(err);
+  });
+});
+
+app.post('/api/invoices', async (req, res, next) => {
+
+  const {
+    cartTotalPrice: totalPrice,
+    cartItems,
+    creationDate,
+  } = req.body;
+
+  const soldProducts = [];
+
+  cartItems.forEach((product) => {
+    soldProducts.push({
+      id: product.id,
+      unitsTotalPrice: product.price,
+      soldUnits: product.quantity,
+    });
+  });
+
+  console.log(soldProducts);
+
+  const {
+    token,
+  } = req.cookies;
+
+  axios.post(`${process.env.API_URL}/api/invoices`, {
+    creationDate,
+    totalPrice,
+    soldProducts,
+  }, {
+    headers: {
+      Authorization: `Bearer ${token}`,
+    },
+  }).then(({
+    data,
+    status,
+  }) => {
+    console.log(data);
+
+    res.status(status).json(data);
+  }).catch((err) => {
+    console.log(err);
+
+  });
 });
 
 app.get('*', main);

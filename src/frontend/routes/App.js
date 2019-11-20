@@ -22,28 +22,28 @@ const AppRoute = ({ component: Component, layout: Layout, ...rest }) => (
 const App = ({ isLogged }) => (
   <BrowserRouter>
     <Switch>
-      <AppRoute exact path='/' component={isLogged ? Sales : Login} layout={isLogged ? DashboardLayout : MainLayout} />
+      <AppRoute exact path="/" component={isLogged ? Sales : Login} layout={isLogged ? DashboardLayout : MainLayout} />
       <AppRoute
         exact
-        path='/login'
+        path="/login"
         layout={MainLayout}
         component={Login}
       />
       <AppRoute
         exact
-        path='/register'
+        path="/register"
         layout={MainLayout}
         component={Register}
       />
       <AppRoute
         exact
-        path='/sales'
+        path="/sales"
         layout={DashboardLayout}
         component={Sales}
       />
       <AppRoute
         exact
-        path='/inventory'
+        path="/inventory"
         layout={DashboardLayout}
         component={Inventory}
       />
