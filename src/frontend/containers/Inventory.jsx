@@ -1,7 +1,7 @@
-import React from 'react';
-import SalesSearch from '../components/SalesSearch';
-import '../assets/styles/containers/Sales.scss';
-import ProductList from '../components/ProductList';
+import React from "react";
+import SalesSearch from "../components/SalesSearch";
+import "../assets/styles/containers/Sales.scss";
+import ProductList from "../components/ProductList";
 
 class Inventory extends React.Component {
   render() {

@@ -112,8 +112,12 @@ export const LoadProductRequest = payload => ({
 export const LoadProduct = payload => {
   return dispatch => {
     axios
-      .get("api/product", payload)
-      .then(result => dispatch(LoadProductRequest(result)))
-      .catch(err => dispatch(setError(error)));
+      .get("api/products", payload)
+      .then(({ data }) => {
+        dispatch(LoadProductRequest(data.data));
+      })
+      .catch(err => {
+        console.log(err);
+      });
   };
 };
