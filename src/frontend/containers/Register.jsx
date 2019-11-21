@@ -3,7 +3,7 @@ import { connect } from 'react-redux';
 import { registerRequest } from '../actions';
 import '../assets/styles/containers/Register.scss';
 
-const Register = (props) => {
+const Register = ({ registerRequest, loadingAuth }) => {
   const [form, setValues] = useState({
     email: '',
     name: '',
@@ -19,36 +19,42 @@ const Register = (props) => {
 
   const handleSubmit = (event) => {
     event.preventDefault();
-    props.registerRequest(form, '/login');
+    registerRequest(form);
   };
 
   return (
-    <section className="register_container">
-      {/* <img className="img" src={logo} alt="user" /> */}
+    <section className="register_container no-select">
       <h2>Crea tu cuenta</h2>
       <h5>¡Y maneja tus productos como nunca antes lo imaginaste!</h5>
       <form className="register_container--form" onSubmit={handleSubmit}>
         <input
           type="Nombre"
+          name="name"
           placeholder="Nombre de tu negocio"
           onChange={handleInput}
+          disabled={loadingAuth}
           required
         />
         <input
           type="email"
+          name="email"
           placeholder="Correo"
           onChange={handleInput}
+          disabled={loadingAuth}
           required
         />
         <input
           type="password"
+          name="password"
           placeholder="Contraseña"
           onChange={handleInput}
+          disabled={loadingAuth}
           required
         />
-        <button className="submit" type="submit">
+        {!loadingAuth && <button className="submit" type="submit">
           Crear cuenta
-        </button>
+        </button>}
+        {loadingAuth && <i className="fas fa-spin fa-spinner fa-lg color-secondary"></i>}
       </form>
       <p className="register__container--login">
         ¿Ya tienes una cuenta?
@@ -59,8 +65,14 @@ const Register = (props) => {
   );
 };
 
+const mapStateToProps = ({ loadingAuth }) => {
+  return {
+    loadingAuth
+  };
+};
+
 const mapDispatchToProps = {
   registerRequest,
 };
 
-export default connect(null, mapDispatchToProps)(Register);
+export default connect(mapStateToProps, mapDispatchToProps)(Register);

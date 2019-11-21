@@ -20,16 +20,6 @@ export const deleteCart = payload => ({
   payload,
 });
 
-export const loginRequest = payload => ({
-  type: 'LOGIN_REQUEST',
-  payload,
-});
-
-export const registerRequest = payload => ({
-  type: 'REGISTER_REQUEST',
-  payload,
-});
-
 export const resetProducts = payload => ({
   type: 'RESET_PRODUCTS',
   payload,
@@ -60,6 +50,30 @@ export const endPayment = payload => ({
   payload,
 });
 
+export const loadingAuth = payload => ({
+  type: 'LOADING_AUTH',
+  payload
+});
+
+export const loginRequest = payload => ({
+  type: 'LOGIN_REQUEST',
+  payload,
+});
+
+export const registerRequest = payload => {
+  return (dispatch) => {
+    dispatch(loadingAuth(true));
+    axios.post('/auth/sign-up', {
+      ...payload
+    }).then(data => {
+      dispatch(loadingAuth(false));
+      window.location.href = '/login';
+    }).catch(err => {
+      console.log(err);
+    });
+  }
+};
+
 export const loadAvailableProducts = (payload) => {
   return (dispatch) => {
     dispatch(resetProducts());
@@ -85,10 +99,10 @@ export const makePayment = ({
   return (dispatch) => {
     dispatch(startPayment());
     axios.post('/api/invoices', {
-      cartTotalPrice,
-      cartItems,
-      creationDate,
-    })
+        cartTotalPrice,
+        cartItems,
+        creationDate,
+      })
       .then(({
         data,
       }) => {

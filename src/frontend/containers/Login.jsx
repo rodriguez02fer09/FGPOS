@@ -21,7 +21,7 @@ const Login = (props) => {
   };
 
   return (
-    <section className="login_container">
+    <section className="login_container no-select">
       <h2>Inicia sesión</h2>
       <section className="login__container--social-media">
         <p className="twitter-login">

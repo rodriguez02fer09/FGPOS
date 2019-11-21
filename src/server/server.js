@@ -138,8 +138,6 @@ app.post('/api/invoices', async (req, res, next) => {
     });
   });
 
-  console.log(soldProducts);
-
   const {
     token,
   } = req.cookies;
@@ -156,12 +154,9 @@ app.post('/api/invoices', async (req, res, next) => {
     data,
     status,
   }) => {
-    console.log(data);
-
     res.status(status).json(data);
   }).catch((err) => {
     console.log(err);
-
   });
 });
 

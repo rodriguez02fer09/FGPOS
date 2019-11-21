@@ -81,7 +81,7 @@ const reducer = (state, action) => {
       return {
         ...state,
         cartTotalPrice: 0,
-        cartItems: [],
+          cartItems: [],
       };
     case 'START_PAYMENT':
       return {
@@ -92,22 +92,27 @@ const reducer = (state, action) => {
       return {
         ...state,
         makingPayment: false,
-        showCartCheckoutModal: false,
+          showCartCheckoutModal: false,
       };
     case 'RESET_PRODUCTS':
       return {
         ...state,
         loading: true,
-        products: [],
+          products: [],
       };
     case 'STORE_LOADED_PRODUCTS':
       return {
         ...state,
         loading: false,
-        products: action.payload,
+          products: action.payload,
       };
-    default:
-      return state;
+    case 'LOADING_AUTH':
+      return {
+        ...state,
+        loadingAuth: action.payload
+      }
+      default:
+        return state;
   }
 };
 
