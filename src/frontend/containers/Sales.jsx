@@ -1,8 +1,8 @@
 import React from 'react';
-import SalesSearch from '../components/SalesSearch';
 import '../assets/styles/containers/Sales.scss';
 import SalesCart from '../components/SalesCart';
 import ItemsList from '../components/ItemsList';
+import LogOut from '../components/Logout';
 
 class Sales extends React.Component {
   render() {
@@ -12,7 +12,7 @@ class Sales extends React.Component {
           <div id="salesItemsHeader" className="h-6 border-bottom bg-white">
             <div />
             <h3 className="mb-0">Ventas</h3>
-            <SalesSearch />
+            <LogOut />
           </div>
           <ItemsList available={true} />
         </div>

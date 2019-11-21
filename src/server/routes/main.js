@@ -30,6 +30,7 @@ const main = async (req, res, next) => {
       products: [],
       showCartCheckoutModal: false,
       user,
+      loadingAuth: false
     };
 
     const isLogged = (initialState.user.id);

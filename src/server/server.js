@@ -56,7 +56,6 @@ app.post('/auth/sign-in', async (req, res, next) => {
       if (error || !data) {
         return next(boom.unauthorized());
       }
-
       req.login(data, {
         session: false,
       }, async (error) => {
@@ -71,7 +70,7 @@ app.post('/auth/sign-in', async (req, res, next) => {
 
         res.cookie('token', token, {
           httpOnly: ENV !== 'development',
-          secure: ENV !== 'development'
+          secure: ENV !== 'development',
         });
         res.status(200).json(user.user);
       });
@@ -138,8 +137,6 @@ app.post('/api/invoices', async (req, res, next) => {
     });
   });
 
-  console.log(soldProducts);
-
   const {
     token,
   } = req.cookies;
@@ -156,12 +153,9 @@ app.post('/api/invoices', async (req, res, next) => {
     data,
     status,
   }) => {
-    console.log(data);
-
     res.status(status).json(data);
   }).catch((err) => {
     console.log(err);
-
   });
 });
 

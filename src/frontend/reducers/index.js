@@ -62,7 +62,7 @@ const reducer = (state, action) => {
         cartItems,
       };
     }
-    case 'LOGIN_REQUEST':
+    case 'DEFINE_USER':
       return {
         ...state,
         user: action.payload,
@@ -105,6 +105,11 @@ const reducer = (state, action) => {
         ...state,
         loading: false,
         products: action.payload,
+      };
+    case 'LOADING_AUTH':
+      return {
+        ...state,
+        loadingAuth: action.payload,
       };
     default:
       return state;

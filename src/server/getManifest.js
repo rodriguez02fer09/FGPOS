@@ -7,8 +7,11 @@ const getManifest = () => {
     if (process.env.NODE_ENV !== 'development') {
       return JSON.parse(fs.readFileSync(`${__dirname}/public/manifest.json`, 'utf8'));
     }
+    return null;
+
   } catch (err) {
     console.log(err);
+    return null;
   }
 };
 
