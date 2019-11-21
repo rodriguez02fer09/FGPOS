@@ -5,7 +5,7 @@ import SalesCartCheckoutItem from './SalesCartCheckoutItem';
 import { hideCartCheckoutModal, makePayment } from '../actions';
 import '../assets/styles/components/SalesCartCheckoutModal.scss';
 
-const SalesCartCheckoutModal = ({ show, cartItems, cartTotalPrice, hideCartCheckoutModal, makePayment, makingPayment }) => {
+const SalesCartCheckoutModal = ({ show, cartItems, cartTotalPrice, hideCartCheckoutModal, makePayment, makingPayment, user }) => {
 
   const [values, setValues] = useState({
     cash: 0,
@@ -54,7 +54,7 @@ const SalesCartCheckoutModal = ({ show, cartItems, cartTotalPrice, hideCartCheck
     >
       <div id="invoiceInformation">
         <div id="invoiceTitle">
-          <h4>FG POS</h4>
+          <h4>{user.name}</h4>
           <h5>Factura</h5>
         </div>
         <div id="invoiceDate">
@@ -67,7 +67,7 @@ const SalesCartCheckoutModal = ({ show, cartItems, cartTotalPrice, hideCartCheck
       </div>
       <hr className="sales-cart-hr" />
       <div className="text-center">
-        <input id="salesCartCheckoutModalCashInput" type="number" placeholder={cartTotalPrice} pattern="[0-9]" min="0" onChange={handleCashInput} />
+        <input id="salesCartCheckoutModalCashInput" type="number" placeholder={cartTotalPrice} pattern="[0-9]" min="0" onChange={handleCashInput} disabled={makingPayment} />
         <h6>Efectivo recibido</h6>
       </div>
       <hr className="sales-cart-hr" />
@@ -120,6 +120,7 @@ const mapStateToProps = (state) => {
     cartItems: state.cartItems,
     cartTotalPrice: state.cartTotalPrice,
     makingPayment: state.makingPayment,
+    user: state.user
   };
 };
 
