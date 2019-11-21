@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useState, useEffect } from 'react';
 import Modal from 'react-modal';
 import { connect } from 'react-redux';
 import SalesCartCheckoutItem from './SalesCartCheckoutItem';
@@ -6,9 +6,14 @@ import { hideCartCheckoutModal, makePayment } from '../actions';
 import '../assets/styles/components/SalesCartCheckoutModal.scss';
 
 const SalesCartCheckoutModal = ({ show, cartItems, cartTotalPrice, hideCartCheckoutModal, makePayment, makingPayment }) => {
-  Modal.setAppElement('#app');
 
-  const creationDate = new Date();
+
+  const [values, setValues] = useState({
+    cash: 0,
+    creationDate: new Date()
+  });
+
+  Modal.setAppElement('#app');
 
   const customStyles = {
     overlay: {
@@ -28,12 +33,19 @@ const SalesCartCheckoutModal = ({ show, cartItems, cartTotalPrice, hideCartCheck
     },
   };
 
+  const handleCashInput = (event) => {
+    setValues({
+      ...values,
+      cash: parseInt(event.target.value) || 0,
+    });
+  };
+
   const handleCloseModal = () => {
     hideCartCheckoutModal();
   };
 
   const handlePayment = () => {
-    makePayment({ cartTotalPrice, cartItems, creationDate: creationDate.getTime() });
+    makePayment({ cartTotalPrice, cartItems, creationDate: values.creationDate.getTime() });
   };
 
   return (
@@ -48,11 +60,16 @@ const SalesCartCheckoutModal = ({ show, cartItems, cartTotalPrice, hideCartCheck
         </div>
         <div id="invoiceDate">
           <h5>
-            {creationDate.toLocaleDateString()}
+            {values.creationDate.toLocaleDateString()}
             {' '}
-            {creationDate.toLocaleTimeString()}
+            {values.creationDate.toLocaleTimeString()}
           </h5>
         </div>
+      </div>
+      <hr className="sales-cart-hr" />
+      <div className="text-center">
+        <input id="salesCartCheckoutModalCashInput" type="number" placeholder={cartTotalPrice} pattern="[0-9]" min="0" onChange={handleCashInput} />
+        <h6>Efectivo recibido</h6>
       </div>
       <hr className="sales-cart-hr" />
       <div id="salesCartCheckoutItemsContainer">
@@ -74,10 +91,21 @@ const SalesCartCheckoutModal = ({ show, cartItems, cartTotalPrice, hideCartCheck
         quantity={1}
         showQuantity={false}
       />
+      <hr className="sales-cart-hr" />
+      {
+        values.cash >= cartTotalPrice && (
+          <SalesCartCheckoutItem
+            key="cashBack"
+            name="CAMBIO"
+            price={values.cash - cartTotalPrice}
+            quantity={1}
+            showQuantity={false}
+          />
+        )}
       <div id="salesCartCheckoutButtons">
         {!makingPayment && (
           <>
-            <button className="sales-cart-button button-success" type="button" onClick={() => handlePayment()}><i className="fas fa-money-bill-wave" /></button>
+            <button className="sales-cart-button button-success" type="button" onClick={() => handlePayment()} disabled={values.cash < cartTotalPrice}><i className="fas fa-money-bill-wave" /></button>
             <button className="sales-cart-button button-danger" type="button" onClick={() => handleCloseModal()}><i className="fas fa-window-close" /></button>
           </>
         )}
