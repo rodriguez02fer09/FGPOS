@@ -1,7 +1,10 @@
 import getManifest from '../getManifest';
 
 let files = false;
-if (process.env.NODE_ENV !== 'development') files = getManifest();
+if (process.env.NODE_ENV !== 'development') {
+  files = getManifest();
+  console.log(files);
+}
 
 const render = (html, preloadedState) => {
   return (`
@@ -15,8 +18,8 @@ const render = (html, preloadedState) => {
       <meta description="Sistema de ventas innovador y único">
       <title>FG Pos</title>
       <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Muli&display=swap">
-      <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.9.0/css/all.css" crossorigin="anonymous">
-      <link rel="stylesheet" href="${files ? files['main.css'] : 'assets/app.css'}" type="text/css"></link>
+      <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.9.0/css/all.css" crossorigin="anonymous" type="text/css">
+      <link rel="stylesheet" href="${files ? files['main.css'] : 'assets/app.css'}" type="text/css"/>
     </head>
     <body>
       <div id="app">${html}</div>

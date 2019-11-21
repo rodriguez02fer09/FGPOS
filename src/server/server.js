@@ -71,7 +71,7 @@ app.post('/auth/sign-in', async (req, res, next) => {
 
         res.cookie('token', token, {
           httpOnly: ENV !== 'development',
-          secure: ENV !== 'development',
+          secure: ENV !== 'development'
         });
         res.status(200).json(user.user);
       });

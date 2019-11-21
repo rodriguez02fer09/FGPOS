@@ -3,7 +3,7 @@ import { NavLink } from 'react-router-dom';
 import '../assets/styles/components/DashboardLayout.scss';
 
 const DashboardLayout = ({ children }) => (
-  <div id="dashboardMainContainer">
+  <main id="dashboardMainContainer">
     <aside id="dashboardAside">
       <div id="headerMenuButtonContainer" className="h-6 border-bottom">
         <button className="dashboard-button button-white" type="button">
@@ -27,7 +27,7 @@ const DashboardLayout = ({ children }) => (
       </ul>
     </aside>
     <div id="interactionContainer">{children}</div>
-  </div>
+  </main>
 );
 
 export default DashboardLayout;
