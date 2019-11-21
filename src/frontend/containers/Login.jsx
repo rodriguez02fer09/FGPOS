@@ -62,7 +62,7 @@ const Login = ({ loginRequest, loadingAuth, history }) => {
       </form>
 
       <p className="login__container--register">
-        ¿No tienes una cuenta?
+        ¿No tienes una cuenta?&nbsp;
         <span role="listitem" onClick={() => history.push('/register')}>Regístrate</span>
       </p>
     </section>

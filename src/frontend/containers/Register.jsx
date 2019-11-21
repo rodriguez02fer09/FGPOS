@@ -59,7 +59,7 @@ const Register = ({ registerRequest, loadingAuth, history }) => {
         {loadingAuth && <i className="fas fa-spin fa-spinner fa-lg color-secondary" />}
       </form>
       <p className="register__container--login">
-        ¿Ya tienes una cuenta?
+        ¿Ya tienes una cuenta?&nbsp;
         <span role="listitem" onClick={() => history.push('/login')}>Inicia sesión</span>
       </p>
     </section>
