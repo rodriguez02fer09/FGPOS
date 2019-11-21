@@ -26,26 +26,26 @@ const App = ({ isLogged }) => (
       <AppRoute
         exact
         path="/login"
-        layout={MainLayout}
-        component={Login}
+        component={isLogged ? Sales : Login}
+        layout={isLogged ? DashboardLayout : MainLayout}
       />
       <AppRoute
         exact
         path="/register"
-        layout={MainLayout}
-        component={Register}
+        component={isLogged ? Sales : Register}
+        layout={isLogged ? DashboardLayout : MainLayout}
       />
       <AppRoute
         exact
         path="/sales"
-        layout={DashboardLayout}
-        component={Sales}
+        component={isLogged ? Sales : Login}
+        layout={isLogged ? DashboardLayout : MainLayout}
       />
       <AppRoute
         exact
         path="/inventory"
-        layout={DashboardLayout}
-        component={Inventory}
+        component={isLogged ? Inventory : Login}
+        layout={isLogged ? DashboardLayout : MainLayout}
       />
       <Route component={NotFound} />
     </Switch>

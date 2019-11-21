@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState } from 'react';
 import Modal from 'react-modal';
 import { connect } from 'react-redux';
 import SalesCartCheckoutItem from './SalesCartCheckoutItem';
@@ -7,10 +7,9 @@ import '../assets/styles/components/SalesCartCheckoutModal.scss';
 
 const SalesCartCheckoutModal = ({ show, cartItems, cartTotalPrice, hideCartCheckoutModal, makePayment, makingPayment }) => {
 
-
   const [values, setValues] = useState({
     cash: 0,
-    creationDate: new Date()
+    creationDate: new Date(),
   });
 
   Modal.setAppElement('#app');
@@ -36,7 +35,7 @@ const SalesCartCheckoutModal = ({ show, cartItems, cartTotalPrice, hideCartCheck
   const handleCashInput = (event) => {
     setValues({
       ...values,
-      cash: parseInt(event.target.value) || 0,
+      cash: parseInt(event.target.value, 10) || 0,
     });
   };
 

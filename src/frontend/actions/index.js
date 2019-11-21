@@ -52,26 +52,55 @@ export const endPayment = payload => ({
 
 export const loadingAuth = payload => ({
   type: 'LOADING_AUTH',
-  payload
-});
-
-export const loginRequest = payload => ({
-  type: 'LOGIN_REQUEST',
   payload,
 });
 
-export const registerRequest = payload => {
+export const defineUser = payload => ({
+  type: 'DEFINE_USER',
+  payload,
+});
+
+export const registerRequest = (payload) => {
   return (dispatch) => {
     dispatch(loadingAuth(true));
     axios.post('/auth/sign-up', {
-      ...payload
-    }).then(data => {
+      ...payload,
+    }).then((data) => {
       dispatch(loadingAuth(false));
       window.location.href = '/login';
-    }).catch(err => {
+    }).catch((err) => {
+      dispatch(loadingAuth(false));
       console.log(err);
     });
-  }
+  };
+};
+
+export const loginRequest = ({
+  email,
+  password,
+}) => {
+  return (dispatch) => {
+    dispatch(loadingAuth(true));
+    axios.post('/auth/sign-in', {}, {
+      auth: {
+        username: email,
+        password,
+      },
+    }).then(({
+      data,
+    }) => {
+      console.log(data);
+      document.cookie = `email=${data.email}`;
+      document.cookie = `name=${data.name}`;
+      document.cookie = `id=${data.id}`;
+      window.location.href = '/sales';
+      dispatch(loadingAuth(false));
+    }).catch((err) => {
+      console.log(err);
+      dispatch(loadingAuth(false));
+      console.log(err);
+    });
+  };
 };
 
 export const loadAvailableProducts = (payload) => {
@@ -99,10 +128,10 @@ export const makePayment = ({
   return (dispatch) => {
     dispatch(startPayment());
     axios.post('/api/invoices', {
-        cartTotalPrice,
-        cartItems,
-        creationDate,
-      })
+      cartTotalPrice,
+      cartItems,
+      creationDate,
+    })
       .then(({
         data,
       }) => {

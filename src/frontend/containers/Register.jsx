@@ -3,7 +3,7 @@ import { connect } from 'react-redux';
 import { registerRequest } from '../actions';
 import '../assets/styles/containers/Register.scss';
 
-const Register = ({ registerRequest, loadingAuth }) => {
+const Register = ({ registerRequest, loadingAuth, history }) => {
   const [form, setValues] = useState({
     email: '',
     name: '',
@@ -51,15 +51,16 @@ const Register = ({ registerRequest, loadingAuth }) => {
           disabled={loadingAuth}
           required
         />
-        {!loadingAuth && <button className="submit" type="submit">
-          Crear cuenta
-        </button>}
-        {loadingAuth && <i className="fas fa-spin fa-spinner fa-lg color-secondary"></i>}
+        {!loadingAuth && (
+          <button className="submit" type="submit">
+            Crear cuenta
+          </button>
+        )}
+        {loadingAuth && <i className="fas fa-spin fa-spinner fa-lg color-secondary" />}
       </form>
       <p className="register__container--login">
         ¿Ya tienes una cuenta?
-        {' '}
-        <span role="listitem" onClick={() => props.history.push('/login')}>Inicia sesión</span>
+        <span role="listitem" onClick={() => history.push('/login')}>Inicia sesión</span>
       </p>
     </section>
   );
@@ -67,7 +68,7 @@ const Register = ({ registerRequest, loadingAuth }) => {
 
 const mapStateToProps = ({ loadingAuth }) => {
   return {
-    loadingAuth
+    loadingAuth,
   };
 };
 
