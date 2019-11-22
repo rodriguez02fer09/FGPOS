@@ -67,7 +67,7 @@ const SalesCartCheckoutModal = ({ show, cartItems, cartTotalPrice, hideCartCheck
       </div>
       <hr className="sales-cart-hr" />
       <div className="text-center">
-        <input id="salesCartCheckoutModalCashInput" type="number" placeholder={cartTotalPrice} pattern="[0-9]" min="0" onChange={handleCashInput} disabled={makingPayment} />
+        <input id="salesCartCheckoutModalCashInput" type="number" placeholder={cartTotalPrice} pattern="[0-9]" min="0" onChange={handleCashInput} disabled={makingPayment} autoFocus />
         <h6>Efectivo recibido</h6>
       </div>
       <hr className="sales-cart-hr" />
