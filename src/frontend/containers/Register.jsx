@@ -26,6 +26,7 @@ const Register = ({ registerRequest, loadingAuth, history }) => {
     <section className="register_container no-select">
       <h2>Crea tu cuenta</h2>
       <h5>¡Y maneja tus productos como nunca antes lo imaginaste!</h5>
+      <hr className="hr-primary-color" />
       <form className="register_container--form" onSubmit={handleSubmit}>
         <input
           type="Nombre"

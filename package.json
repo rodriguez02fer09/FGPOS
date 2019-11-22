@@ -9,7 +9,8 @@
     "start:dev": "nodemon src/server/index.js --exact babel-node",
     "test": "jest",
     "test:watch": "jest --watch",
-    "test:coverage": "jest --coverage"
+    "test:coverage": "jest --coverage",
+    "fix:eslint": "eslint src/frontend/**/*.jsx --fix && eslint src/frontend/**/*.js --fix"
   },
   "repository": "git@github.com:rodriguez02fer09/fgpos.git",
   "author": "Fernanda Rodriguez & Gabriel Pinto",

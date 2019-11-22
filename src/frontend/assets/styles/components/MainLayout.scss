@@ -1,7 +1,9 @@
 .layout-navbar {
-    text-align: right;
-    padding: 1rem 1rem;
-    height: 10vh;
+    padding: 1rem 3rem;
+    height: 12vh;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
 
     a {
         margin: 0rem 0.5rem;
@@ -29,6 +31,16 @@
     }
 }
 
+.hide-md {
+    display: none;
+}
+
+hr.hide-md {
+    width: 80%;
+    margin: 1rem auto;
+
+}
+
 .layout-container {
     display: flex;
     width: 100%;
@@ -40,18 +52,35 @@
 
 .layout-information {
     width: 65%;
-    text-align: center;
     padding: 1rem 0;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
 
-    img {
-        width: 190px;
+    h2 {
+        font-weight: 400;
+        text-align: center;
     }
+
+    span {
+        font-weight: 700;
+    }
+}
+
+#fgPosLogo {
+    height: calc(12vh - 2rem);
+    float: left;
+}
+
+#fgPosMain {
+    width: 70%;
 }
 
 .layout-privacy {
     display: flex;
     justify-content: space-between;
-    padding: 0rem 1rem;
+    padding: 0rem 4rem;
 
     a {
         color: black;
@@ -71,21 +100,43 @@
 }
 
 @media only screen and (max-width: 992px) {
+
+    .hide-md {
+        display: inline-flex;
+    }
+
+    .layout-information {
+        padding: 1rem 1rem;
+    }
+
     .layout-container {
-        flex-direction: column-reverse;
+        flex-direction: column;
 
         .layout-children,
         .layout-information {
             width: 100%;
         }
     }
+
+    .layout-privacy {
+        padding-top: 1rem;
+        padding-bottom: 2rem;
+    }
 }
 
 @media only screen and (max-width: 550px) {
+
+    .layout-navbar {
+        padding: 1rem 0.6rem;
+    }
+}
+
+@media only screen and (max-width: 594px) {
     .layout-privacy {
-        align-items: flex-start;
+        align-items: center;
         flex-direction: column;
-        padding-bottom: 1rem;
+        padding-bottom: 2rem;
+        padding-top: 1rem;
 
         a {
             margin: 5px 0px;
@@ -103,5 +154,9 @@
 
     .layout-information {
         width: 50%;
+
+        h2 {
+            padding: 0rem 2rem;
+        }
     }
 }
