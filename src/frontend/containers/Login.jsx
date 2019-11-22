@@ -27,11 +27,13 @@ const Login = ({ loginRequest, loadingAuth, history }) => {
         <section className="login__container--social-media">
           <p className="twitter-login">
             <i className="fab fa-twitter" />
-            &nbsp;<span>Inicia sesión con Twitter</span>
+            &nbsp;
+            <span>Inicia sesión con Twitter</span>
           </p>
           <p className="google-login">
             <i className="fab fa-google" />
-            &nbsp;<span>Inicia sesión con Google</span>
+            &nbsp;
+            <span>Inicia sesión con Google</span>
           </p>
         </section>
       )}
