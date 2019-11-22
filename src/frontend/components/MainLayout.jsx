@@ -1,7 +1,7 @@
 import React from 'react';
 import { NavLink } from 'react-router-dom';
 import '../assets/styles/components/MainLayout.scss';
-import fgPosLogo from '../assets/images/FGPosLogo.png'
+import fgPosLogo from '../assets/logos/FGPosLogo.png'
 
 const MainLayout = ({ children }) => (
   <>
