@@ -120,7 +120,7 @@ const mapStateToProps = (state) => {
     cartItems: state.cartItems,
     cartTotalPrice: state.cartTotalPrice,
     makingPayment: state.makingPayment,
-    user: state.user
+    user: state.user,
   };
 };
 

@@ -11,7 +11,11 @@ const Sales = ({ user }) => {
       <div id="salesItems">
         <div id="salesItemsHeader" className="h-6 border-bottom bg-white">
           <div />
-          <h3 className="mb-0">{user.name} - Ventas</h3>
+          <h3 className="mb-0">
+            {user.name}
+            {' '}
+- Ventas
+          </h3>
           <LogOut />
         </div>
         <ItemsList available={true} />
@@ -21,12 +25,12 @@ const Sales = ({ user }) => {
       </div>
     </>
   );
-}
+};
 
 const mapStateToProps = ({ user }) => {
   return {
-    user
-  }
+    user,
+  };
 };
 
 export default connect(
