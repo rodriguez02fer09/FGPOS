@@ -75,7 +75,16 @@ button:disabled {
   color: $third-color;
 }
 
+.color-orange {
+  color: #ff914d;
+}
+
 .hr-primary-color {
   margin: 1rem 0;
   border: 1px solid $primary-color;
+}
+
+.hr-third-color {
+  margin: 1rem 0;
+  border: 1px solid $third-color;
 }
