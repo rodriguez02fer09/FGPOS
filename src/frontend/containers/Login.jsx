@@ -27,15 +27,15 @@ const Login = ({ loginRequest, loadingAuth, history }) => {
         <section className="login__container--social-media">
           <p className="twitter-login">
             <i className="fab fa-twitter" />
-            &nbsp;Inicia sesión con Twitter
+            &nbsp;<span>Inicia sesión con Twitter</span>
           </p>
           <p className="google-login">
             <i className="fab fa-google" />
-            &nbsp;Inicia sesión con Google
+            &nbsp;<span>Inicia sesión con Google</span>
           </p>
         </section>
       )}
-      <hr />
+      <hr className="hr-primary-color" />
       <form className="login_container--form" onSubmit={handleSubmit}>
         <input
           type="email"
