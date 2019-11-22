@@ -68,9 +68,11 @@ app.post('/auth/sign-in', async (req, res, next) => {
           ...user
         } = data;
 
+        res.clearCookie('token');
         res.cookie('token', token, {
           httpOnly: ENV !== 'development',
           secure: ENV !== 'development',
+          domain: ENV !== 'development' ? 'fgpos.gabrielpinto.me' : ''
         });
         res.status(200).json(user.user);
       });
