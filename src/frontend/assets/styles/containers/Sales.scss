@@ -15,3 +15,62 @@
   align-items: center;
   justify-content: space-between;
 }
+
+@media only screen and (max-width: 1200px) {
+  #salesCart {
+    width: 23%;
+
+  }
+
+  #salesItems {
+    width: 77%;
+  }
+}
+
+@media only screen and (max-width: 1100px) {
+  #salesCart {
+    width: 25%;
+
+  }
+
+  #salesItems {
+    width: 75%;
+  }
+}
+
+
+@media only screen and (max-width: 992px) {
+  #salesCart {
+    width: 28%;
+
+  }
+
+  #salesItems {
+    width: 72%;
+  }
+}
+
+
+
+@media only screen and (max-width: 768px) {
+  #salesCart {
+    width: 35%;
+
+  }
+
+  #salesItems {
+    width: 65%;
+  }
+}
+
+
+@media only screen and (max-width: 576px) {
+  #salesCart {
+    display: none;
+
+  }
+
+  #salesItems {
+    width: 100%
+  }
+}

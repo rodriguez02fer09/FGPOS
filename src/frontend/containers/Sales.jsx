@@ -14,7 +14,7 @@ const Sales = ({ user }) => {
           <h3 className="mb-0">
             {user.name}
             {' '}
-- Ventas
+            - Ventas
           </h3>
           <LogOut />
         </div>
