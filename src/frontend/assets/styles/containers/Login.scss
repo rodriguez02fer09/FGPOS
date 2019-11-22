@@ -3,7 +3,6 @@
   flex-direction: column;
   background-color: white;
   justify-content: center;
-  padding: 50px 5rem;
   height: 100%;
   align-items: center;
 
@@ -23,12 +22,22 @@
     margin: 0.5rem 0;
   }
 
-  p.twitter-login:hover {
+  p.twitter-login i {
     color: #00acee;
   }
 
-  p.google-login:hover {
+  p.twitter-login:hover span {
+    border-bottom: 1px solid #00acee;
+    padding-bottom: 1px;
+  }
+
+  p.google-login i {
     color: #d34836;
+  }
+
+  p.google-login:hover span {
+    border-bottom: 1px solid #d34836;
+    padding-bottom: 1px;
   }
 }
 
@@ -92,5 +101,65 @@
   span {
     cursor: pointer;
     color: $secondary-color;
+  }
+}
+
+@media only screen and (max-width: 442px) {
+  .login_container--form {
+    width: 100%;
+  }
+}
+
+@media only screen and (min-width: 768.1px) {
+  .login_container {
+    padding: 50px 5rem;
+  }
+}
+
+@media only screen and (max-width: 768px) {
+  .login_container {
+    padding: 0 4rem 2rem;
+  }
+}
+
+@media only screen and (max-width: 1362px) {
+  .login_container--form {
+    width: 100%;
+  }
+}
+
+@media only screen and (max-width: 992px) {
+  .login_container--form {
+    width: 50%;
+  }
+}
+
+@media only screen and (max-width: 692px) {
+  .login_container--form {
+    width: 60%;
+  }
+}
+
+@media only screen and (max-width: 582px) {
+  .login_container--form {
+    width: 75%;
+  }
+}
+
+@media only screen and (max-width: 502px) {
+  .login_container--form {
+    width: 100%;
+  }
+}
+
+@media only screen and (max-width: 410px) {
+  .login_container {
+    padding: 0px 3rem 2rem;
+  }
+}
+
+@media only screen and (max-width: 350px) {
+  .login_container {
+    padding: 50px 1rem;
   }
 }

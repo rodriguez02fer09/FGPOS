@@ -3,13 +3,8 @@
   flex-direction: column;
   background-color: white;
   justify-content: center;
-  padding: 50px 5rem;
   height: 100%;
   align-items: center;
-
-  h2 {
-    margin: 1rem 0;
-  }
 
   h5 {
     margin: 0 0 1.5rem;
@@ -77,5 +72,70 @@
   span {
     cursor: pointer;
     color: $secondary-color;
+  }
+}
+
+@media only screen and (max-width: 442px) {
+  .register_container--form {
+    width: 100%;
+  }
+}
+
+@media only screen and (max-width: 768px) {
+  .register_container {
+    text-align: center;
+    padding: 0 4rem 2rem;
+  }
+}
+
+@media only screen and (min-width: 768.1px) {
+  .register_container {
+    padding: 50px 5rem;
+
+    h2 {
+      margin: 1rem 0;
+    }
+  }
+}
+
+@media only screen and (max-width: 1362px) {
+  .register_container--form {
+    width: 100%;
+  }
+}
+
+@media only screen and (max-width: 992px) {
+  .register_container--form {
+    width: 50%;
+  }
+}
+
+@media only screen and (max-width: 692px) {
+  .register_container--form {
+    width: 60%;
+  }
+}
+
+@media only screen and (max-width: 582px) {
+  .register_container--form {
+    width: 75%;
+  }
+}
+
+@media only screen and (max-width: 502px) {
+  .register_container--form {
+    width: 100%;
+  }
+}
+
+@media only screen and (max-width: 410px) {
+  .register_container {
+    padding: 0px 3rem 2rem;
+  }
+}
+
+@media only screen and (max-width: 350px) {
+  .register_container {
+    padding: 50px 1rem;
   }
 }

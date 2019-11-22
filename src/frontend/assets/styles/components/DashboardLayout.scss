@@ -6,7 +6,7 @@
 }
 
 #interactionContainer {
-  width: 97vw;
+  width: 96vw;
   background-color: whitesmoke;
   display: flex;
 }
@@ -14,7 +14,7 @@
 #dashboardAside {
   background-color: white;
   height: calc(100vh - 47.6px);
-  width: 3vw;
+  width: 4vw;
   height: 100%;
 
   ul {
@@ -86,4 +86,36 @@
 
 .h-100 {
   height: 100%;
+}
+
+@media only screen and (max-width: 1200px) {
+  #dashboardAside {
+    width: 5vw;
+  }
+
+  #interactionContainer {
+    width: 95vw;
+  }
+}
+
+@media only screen and (max-width: 992px) {}
+
+@media only screen and (max-width: 768px) {
+  #dashboardAside {
+    width: 8vw;
+  }
+
+  #interactionContainer {
+    width: 92vw;
+  }
+}
+
+@media only screen and (max-width: 576px) {
+  #dashboardAside {
+    width: 12vw;
+  }
+
+  #interactionContainer {
+    width: 88vw;
+  }
 }

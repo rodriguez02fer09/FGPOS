@@ -31,26 +31,27 @@
 
 .layout-container {
     display: flex;
-    height: 83vh;
-    max-height: 83vh;
     width: 100%;
 }
 
 .layout-children {
-    background-color: red;
     width: 35%;
 }
 
 .layout-information {
-    background-color: blue;
     width: 65%;
+    text-align: center;
+    padding: 1rem 0;
+
+    img {
+        width: 190px;
+    }
 }
 
 .layout-privacy {
     display: flex;
-    height: 7vh;
     justify-content: space-between;
-    padding: 1rem;
+    padding: 0rem 1rem;
 
     a {
         color: black;
@@ -59,5 +60,48 @@
 
     a:hover {
         text-decoration: underline;
+    }
+}
+
+@media only screen and (min-width: 992.1px) {
+    .layout-container {
+        height: 83vh;
+        max-height: 83vh;
+    }
+}
+
+@media only screen and (max-width: 992px) {
+    .layout-container {
+        flex-direction: column-reverse;
+
+        .layout-children,
+        .layout-information {
+            width: 100%;
+        }
+    }
+}
+
+@media only screen and (max-width: 550px) {
+    .layout-privacy {
+        align-items: flex-start;
+        flex-direction: column;
+        padding-bottom: 1rem;
+
+        a {
+            margin: 5px 0px;
+        }
+    }
+}
+
+
+
+// Widths
+@media only screen and (max-width: 1230px) {
+    .layout-children {
+        width: 50%;
+    }
+
+    .layout-information {
+        width: 50%;
     }
 }
