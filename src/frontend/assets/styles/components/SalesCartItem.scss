@@ -1,0 +1,35 @@
+.cart-item {
+    display: flex;
+    padding: 15px 0px;
+    align-items: center;
+
+    img {
+        width: 50px;
+        height: 50px;
+        border-radius: 0.25rem;
+    }
+}
+
+.cart-item-information {
+    margin-left: 10px;
+    width: calc(100% - 50px);
+}
+
+.cart-item-quantity {
+
+    .fas {
+        cursor: pointer;
+    }
+
+    .fa-plus-circle {
+        color: #28a745;
+    }
+
+    .fa-minus-circle {
+        color: #dc3545;
+    }
+}
+
+.cart-item-price {
+    text-align: right;
+}
