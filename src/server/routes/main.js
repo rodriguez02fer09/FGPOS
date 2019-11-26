@@ -25,6 +25,7 @@ const main = async (req, res, next) => {
     const initialState = {
       cartItems: [],
       cartTotalPrice: 0,
+      fullScreenCart: false,
       loading: true,
       makingPayment: false,
       products: [],

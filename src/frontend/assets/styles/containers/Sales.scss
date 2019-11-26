@@ -63,11 +63,29 @@
   }
 }
 
+@media only screen and (min-width: 576px) {
+  #salesCartResponsiveButtonContainer {
+    display: none;
+  }
+}
 
-@media only screen and (max-width: 576px) {
+
+@media only screen and (max-width: 575px) {
+
   #salesCart {
     display: none;
+  }
 
+  #salesCart.full-screen {
+    top: 5.2vh;
+    position: fixed;
+    z-index: 120000000;
+    bottom: 0px;
+    left: 0px;
+    width: 100%;
+    margin-bottom: 18px;
+    height: 94.8vh;
+    display: block;
   }
 
   #salesItems {

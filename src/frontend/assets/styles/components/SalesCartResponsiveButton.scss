@@ -1,0 +1,39 @@
+#salesCartResponsiveButtonContainer {
+    position: fixed;
+    z-index: 120000000;
+    bottom: 0px;
+    left: 0px;
+    width: 100%;
+    text-align: right;
+    margin-bottom: 18px;
+}
+
+#salesCartResponsiveButtonContainer.d-none {
+    display: none;
+}
+
+#salesCartResponsiveButton {
+    cursor: pointer;
+    margin-right: 18px;
+    display: inline-block;
+    font-weight: 400;
+    color: white;
+    text-align: center;
+    vertical-align: middle;
+    -webkit-user-select: none;
+    -moz-user-select: none;
+    -ms-user-select: none;
+    user-select: none;
+    background-color: $secondary-color;
+    border: 1px solid $secondary-color;
+    padding: 0.375rem 0.75rem;
+    font-size: 1rem;
+    line-height: 1.5;
+    border-radius: 0.25rem;
+    transition: color 0.15s ease-in-out, background-color 0.15s ease-in-out, border-color 0.15s ease-in-out, box-shadow 0.15s ease-in-out;
+    border-color: $secondary-color;
+}
+
+#salesCartResponsiveButton:hover {
+    opacity: 0.94;
+}

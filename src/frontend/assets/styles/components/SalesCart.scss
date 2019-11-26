@@ -21,6 +21,11 @@
         margin-bottom: 10px;
         width: 50px;
     }
+
+    h5 {
+        text-align: center;
+        padding: 0px 1rem;
+    }
 }
 
 #salesCartTotalPrice {
@@ -66,4 +71,25 @@
 
 .button-danger {
     background-color: #dc3545;
+}
+
+.salesCartFullScreenClose {
+    color: #dc3545;
+    display: none;
+    margin-right: 10px;
+}
+
+@media only screen and (max-width: 575px) {
+    #salesCartHeader {
+        justify-content: space-between;
+    }
+
+    .salesCartFullScreenClose {
+        display: block
+    }
+
+    #salesCartButtonsContainer {
+        display: flex;
+        justify-content: center;
+    }
 }

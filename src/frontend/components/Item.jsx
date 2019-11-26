@@ -11,14 +11,14 @@ const Item = (props) => {
   };
 
   return (
-    <div className="item" onClick={addItemToCart} role="listitem">
-      <img src={image} alt={name} />
+    <div className="item" role="listitem">
+      <img src={image} alt={name} onClick={addItemToCart} />
       <h4>
         {name}
         {' '}
-(
+        (
         {units}
-)
+        )
       </h4>
       <h5>
         $

@@ -4,8 +4,9 @@ import '../assets/styles/containers/Sales.scss';
 import SalesCart from '../components/SalesCart';
 import ItemsList from '../components/ItemsList';
 import LogOut from '../components/Logout';
+import SalesCartResponsiveButton from '../components/SalesCartResponsiveButton';
 
-const Sales = ({ user }) => {
+const Sales = ({ user, fullScreenCart }) => {
   return (
     <>
       <div id="salesItems">
@@ -20,16 +21,18 @@ const Sales = ({ user }) => {
         </div>
         <ItemsList available={true} />
       </div>
-      <div id="salesCart">
+      <div id="salesCart" className={fullScreenCart ? 'full-screen' : ''}>
         <SalesCart />
       </div>
+      <SalesCartResponsiveButton />
     </>
   );
 };
 
-const mapStateToProps = ({ user }) => {
+const mapStateToProps = ({ user, fullScreenCart }) => {
   return {
     user,
+    fullScreenCart
   };
 };
 

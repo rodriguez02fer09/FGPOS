@@ -163,7 +163,7 @@ app.post('/api/invoices', async (req, res, next) => {
 
 app.get('*', main);
 
-app.listen(PORT, (err) => {
+app.listen(PORT, '192.168.0.6', (err) => {
   if (err) console.log(err);
   console.log(`Server running on ${PORT}`);
 });

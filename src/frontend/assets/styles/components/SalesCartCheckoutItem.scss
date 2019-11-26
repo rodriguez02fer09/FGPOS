@@ -2,13 +2,16 @@
     display: flex;
     align-items: center;
     margin: 6px 0px;
+    touch-action: manipulation;
 }
 
 .cart-checkout-item-information {
     width: 60%;
+    touch-action: manipulation;
 }
 
 .cart-checkout-item-price {
     width: 40%;
     text-align: right;
+    touch-action: manipulation;
 }

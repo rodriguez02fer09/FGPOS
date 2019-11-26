@@ -89,7 +89,6 @@ export const loginRequest = ({
     }).then(({
       data,
     }) => {
-      console.log(data);
       document.cookie = `email=${data.email}`;
       document.cookie = `name=${data.name}`;
       document.cookie = `id=${data.id}`;
@@ -128,10 +127,10 @@ export const makePayment = ({
   return (dispatch) => {
     dispatch(startPayment());
     axios.post('/api/invoices', {
-      cartTotalPrice,
-      cartItems,
-      creationDate,
-    })
+        cartTotalPrice,
+        cartItems,
+        creationDate,
+      })
       .then(({
         data,
       }) => {
@@ -143,3 +142,8 @@ export const makePayment = ({
       });
   };
 };
+
+export const showFullScreenCart = payload => ({
+  type: 'SHOW_FULL_SCREEN_CART',
+  payload,
+});

@@ -2,6 +2,7 @@
     display: flex;
     padding: 15px 0px;
     align-items: center;
+    touch-action: manipulation;
 
     img {
         width: 50px;
@@ -32,4 +33,24 @@
 
 .cart-item-price {
     text-align: right;
+}
+
+@media only screen and (max-width: 575px) {
+
+    .cart-item {
+        img {
+            width: 60px;
+            height: 60px;
+        }
+    }
+
+    .cart-item-information {
+        h4 {
+            font-size: 1rem;
+        }
+
+        h5 {
+            font-size: 1rem;
+        }
+    }
 }
