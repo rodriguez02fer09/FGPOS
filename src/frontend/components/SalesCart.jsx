@@ -20,9 +20,9 @@ const SalesCart = ({ cartItems, cartTotalPrice, deleteCart, showCartCheckoutModa
       <div id="salesCartHeader" className="h-6 border-bottom">
         <div className="salesCartFullScreenClose">&nbsp;</div>
         <h3>Carrito</h3>
-        <h3 className="salesCartFullScreenClose" onClick={() => showFullScreenCart(false)}><i className="fas fa-times"></i></h3>
+        <h3 className="salesCartFullScreenClose" onClick={() => showFullScreenCart(false)}><i className="fas fa-times" /></h3>
       </div>
-      <div></div>
+      <div />
       {cartItems.length === 0 && (
         <div id="salesCartEmpty" className="no-select">
           <img src={emptyCart} alt="Carrito vació" />
@@ -60,7 +60,7 @@ const SalesCart = ({ cartItems, cartTotalPrice, deleteCart, showCartCheckoutModa
               onClick={() => handleDeleteCart()}
             >
               Vaciar carrito
-          </button>
+            </button>
           </div>
           {show && <SalesCartCheckoutModal />}
         </>
@@ -74,14 +74,14 @@ const mapStateToProps = (state) => {
     cartItems: state.cartItems,
     cartTotalPrice: state.cartTotalPrice,
     show: state.showCartCheckoutModal,
-    fullScreenCart: state.fullScreenCart
+    fullScreenCart: state.fullScreenCart,
   };
 };
 
 const mapDispatchToProps = {
   deleteCart,
   showCartCheckoutModal,
-  showFullScreenCart
+  showFullScreenCart,
 };
 
 export default connect(

@@ -32,7 +32,7 @@ const Sales = ({ user, fullScreenCart }) => {
 const mapStateToProps = ({ user, fullScreenCart }) => {
   return {
     user,
-    fullScreenCart
+    fullScreenCart,
   };
 };
 

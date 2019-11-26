@@ -127,10 +127,10 @@ export const makePayment = ({
   return (dispatch) => {
     dispatch(startPayment());
     axios.post('/api/invoices', {
-        cartTotalPrice,
-        cartItems,
-        creationDate,
-      })
+      cartTotalPrice,
+      cartItems,
+      creationDate,
+    })
       .then(({
         data,
       }) => {
