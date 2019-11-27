@@ -70,7 +70,7 @@ export const defineUser = payload => ({
 });
 
 export const stopLoading = () => ({
-  type: 'STOP_LOADING'
+  type: 'STOP_LOADING',
 });
 
 export const registerRequest = (payload, callback) => {
@@ -193,10 +193,10 @@ export const makePayment = ({
   return (dispatch) => {
     dispatch(startPayment());
     axios.post('/api/invoices', {
-        cartTotalPrice,
-        cartItems,
-        creationDate,
-      })
+      cartTotalPrice,
+      cartItems,
+      creationDate,
+    })
       .then(({
         data,
       }) => {
