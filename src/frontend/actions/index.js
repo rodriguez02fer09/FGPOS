@@ -141,7 +141,6 @@ export const loadInvoices = (payload) => {
             data,
           }) => {
             const invoices = data.data;
-            console.log(invoices);
             let soldProducts = 0;
             let totalProducts = 0;
             let investedMoney = 0;
