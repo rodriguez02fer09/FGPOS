@@ -121,6 +121,25 @@ app.get('/api/products', async (req, res, next) => {
   });
 });
 
+app.get('/api/invoices', async (req, res, next) => {
+  const {
+    token,
+  } = req.cookies;
+
+  axios.get(`${process.env.API_URL}/api/invoices`, {
+    headers: {
+      Authorization: `Bearer ${token}`,
+    },
+  }).then(({
+    data,
+    status,
+  }) => {
+    res.status(status).json(data);
+  }).catch((err) => {
+    console.log(err);
+  });
+});
+
 app.post('/api/invoices', async (req, res, next) => {
 
   const {

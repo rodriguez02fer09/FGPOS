@@ -79,6 +79,14 @@
     margin-right: 10px;
 }
 
+@media only screen and (min-width: 575px) {
+    #salesCartButtonsContainer {
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+    }
+}
+
 @media only screen and (max-width: 575px) {
     #salesCartHeader {
         justify-content: space-between;

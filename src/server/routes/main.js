@@ -26,12 +26,17 @@ const main = async (req, res, next) => {
       cartItems: [],
       cartTotalPrice: 0,
       fullScreenCart: false,
+      invoices: [],
       loading: true,
       makingPayment: false,
       products: [],
       showCartCheckoutModal: false,
       user,
-      loadingAuth: false
+      loadingAuth: false,
+      soldProducts: 0,
+      totalProducts: 0,
+      investedMoney: 0,
+      earnedMoney: 0
     };
 
     const isLogged = (initialState.user.id);

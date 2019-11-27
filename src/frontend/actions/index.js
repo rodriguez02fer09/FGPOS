@@ -25,8 +25,17 @@ export const resetProducts = payload => ({
   payload,
 });
 
+export const resetSystem = payload => ({
+  type: 'RESET_SYSTEM'
+});
+
 export const storeLoadedProducts = payload => ({
   type: 'STORE_LOADED_PRODUCTS',
+  payload,
+});
+
+export const storeLoadedInvoices = payload => ({
+  type: 'STORE_LOADED_INVOICES',
   payload,
 });
 
@@ -119,6 +128,49 @@ export const loadAvailableProducts = (payload) => {
   };
 };
 
+export const loadInvoices = (payload) => {
+  return (dispatch) => {
+    dispatch(resetSystem());
+    axios.get('/api/products')
+      .then(({
+        data,
+      }) => {
+        const products = data.data;
+        axios.get('/api/invoices')
+          .then(({
+            data,
+          }) => {
+            const invoices = data.data;
+            let soldProducts = 0;
+            let totalProducts = 0;
+            let investedMoney = 0;
+            let earnedMoney = 0;
+
+            products.forEach(product => {
+              totalProducts += product.boughtUnits;
+              soldProducts += product.soldUnits;
+              investedMoney += product.boughtUnits * product.unitaryPrice;
+              earnedMoney += product.soldUnits * product.clientPrice;
+            });
+            dispatch(storeLoadedProducts(products));
+            dispatch(storeLoadedInvoices({
+              invoices,
+              soldProducts,
+              totalProducts,
+              investedMoney,
+              earnedMoney
+            }));
+          })
+          .catch((err) => {
+            console.log(err);
+          });
+      })
+      .catch((err) => {
+        console.log(err);
+      });
+  };
+};
+
 export const makePayment = ({
   cartTotalPrice,
   cartItems,
@@ -127,10 +179,10 @@ export const makePayment = ({
   return (dispatch) => {
     dispatch(startPayment());
     axios.post('/api/invoices', {
-      cartTotalPrice,
-      cartItems,
-      creationDate,
-    })
+        cartTotalPrice,
+        cartItems,
+        creationDate,
+      })
       .then(({
         data,
       }) => {

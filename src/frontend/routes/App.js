@@ -7,6 +7,7 @@ import Sales from '../containers/Sales';
 import Login from '../containers/Login';
 import Register from '../containers/Register';
 import Inventory from '../containers/Inventory';
+import Invoices from '../containers/Invoices';
 
 const AppRoute = ({ component: Component, layout: Layout, ...rest }) => (
   <Route
@@ -45,6 +46,12 @@ const App = ({ isLogged }) => (
         exact
         path="/inventory"
         component={isLogged ? Inventory : Login}
+        layout={isLogged ? DashboardLayout : MainLayout}
+      />
+      <AppRoute
+        exact
+        path="/invoices"
+        component={isLogged ? Invoices : Login}
         layout={isLogged ? DashboardLayout : MainLayout}
       />
       <Route component={NotFound} />

@@ -1,0 +1,22 @@
+#invoices {
+    width: 100%;
+}
+
+
+#invoicesHeader {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+
+#invoices {
+    hr.hr-third-color {
+        margin: 2rem auto;
+        width: 80%;
+    }
+}
+
+#invoicesInformation {
+    height: calc(100vh - 47.6px);
+    overflow-y: scroll;
+}
