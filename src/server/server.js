@@ -7,6 +7,10 @@ import passport from 'passport';
 import boom from '@hapi/boom';
 import cookieParser from 'cookie-parser';
 import main from './routes/main';
+import {
+  logErrors,
+  errorHandler
+} from './utils/middleware/errorHandlers.js';
 
 dotenv.config();
 
@@ -117,7 +121,7 @@ app.get('/api/products', async (req, res, next) => {
   }) => {
     res.status(status).json(data);
   }).catch((err) => {
-    console.log(err);
+    next(err);
   });
 });
 
@@ -136,7 +140,7 @@ app.get('/api/invoices', async (req, res, next) => {
   }) => {
     res.status(status).json(data);
   }).catch((err) => {
-    console.log(err);
+    next(err);
   });
 });
 
@@ -176,11 +180,15 @@ app.post('/api/invoices', async (req, res, next) => {
   }) => {
     res.status(status).json(data);
   }).catch((err) => {
-    console.log(err);
+    next(err);
   });
 });
 
 app.get('*', main);
+
+// Errors middleware
+app.use(logErrors);
+app.use(errorHandler);
 
 app.listen(PORT, (err) => {
   if (err) console.log(err);

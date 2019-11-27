@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
 import { connect } from 'react-redux';
+import { useToasts } from 'react-toast-notifications';
 import { loginRequest } from '../actions';
 import '../assets/styles/containers/Login.scss';
 
@@ -7,6 +8,12 @@ const Login = ({ loginRequest, loadingAuth, history }) => {
   const [form, setValues] = useState({
     email: '',
   });
+
+  const { addToast } = useToasts();
+
+  const showError = (message) => {
+    addToast(message, { appearance: 'error' });
+  };
 
   const handleInput = (event) => {
     setValues({
@@ -17,7 +24,7 @@ const Login = ({ loginRequest, loadingAuth, history }) => {
 
   const handleSubmit = (event) => {
     event.preventDefault();
-    loginRequest(form);
+    loginRequest(form, showError);
   };
 
   return (

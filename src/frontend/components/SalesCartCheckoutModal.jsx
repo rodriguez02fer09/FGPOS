@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
 import Modal from 'react-modal';
 import { connect } from 'react-redux';
+import { useToasts } from 'react-toast-notifications';
 import SalesCartCheckoutItem from './SalesCartCheckoutItem';
 import { hideCartCheckoutModal, makePayment } from '../actions';
 import '../assets/styles/components/SalesCartCheckoutModal.scss';
@@ -11,6 +12,12 @@ const SalesCartCheckoutModal = ({ show, cartItems, cartTotalPrice, hideCartCheck
     cash: 0,
     creationDate: new Date(),
   });
+
+  const { addToast } = useToasts();
+
+  const showAlert = (type, message) => {
+    addToast(message, { appearance: type });
+  };
 
   Modal.setAppElement('#app');
 
@@ -44,7 +51,7 @@ const SalesCartCheckoutModal = ({ show, cartItems, cartTotalPrice, hideCartCheck
   };
 
   const handlePayment = () => {
-    makePayment({ cartTotalPrice, cartItems, creationDate: values.creationDate.getTime() });
+    makePayment({ cartTotalPrice, cartItems, creationDate: values.creationDate.getTime() }, showAlert);
   };
 
   return (

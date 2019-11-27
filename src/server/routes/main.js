@@ -7,6 +7,7 @@ import { renderRoutes } from 'react-router-config';
 import Routes from '../../frontend/routes/serverRoutes';
 import reducer from '../../frontend/reducers';
 import render from '../render';
+import { ToastProvider } from 'react-toast-notifications';
 
 require('dotenv').config();
 
@@ -43,12 +44,14 @@ const main = async (req, res, next) => {
     const store = createStore(reducer, initialState);
     const html = renderToString(
       <Provider store={store}>
-        <StaticRouter
-          location={req.url}
-          context={{}}
-        >
-          {renderRoutes(Routes(isLogged))}
-        </StaticRouter>
+        <ToastProvider>
+          <StaticRouter
+            location={req.url}
+            context={{}}
+          >
+            {renderRoutes(Routes(isLogged))}
+          </StaticRouter>
+        </ToastProvider>
       </Provider>,
     );
     const preloadedState = store.getState();

@@ -135,6 +135,13 @@ const reducer = (state, action) => {
         products: [],
         invoices: [],
       };
+    case 'STOP_LOADING':
+      return {
+        ...state,
+        loading: false,
+        loadingAuth: false,
+        makingPayment: false,
+      };
     default:
       return state;
   }

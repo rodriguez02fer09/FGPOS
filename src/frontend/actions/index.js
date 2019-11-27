@@ -69,17 +69,25 @@ export const defineUser = payload => ({
   payload,
 });
 
-export const registerRequest = (payload) => {
+export const stopLoading = () => ({
+  type: 'STOP_LOADING'
+});
+
+export const registerRequest = (payload, callback) => {
   return (dispatch) => {
     dispatch(loadingAuth(true));
     axios.post('/auth/sign-up', {
       ...payload,
     }).then((data) => {
-      dispatch(loadingAuth(false));
-      window.location.href = '/login';
+      callback('success', 'Tu cuenta fue creada de forma exitosa');
+      setTimeout(() => {
+        dispatch(loadingAuth(false));
+        window.location.href = '/login';
+      }, 3000);
     }).catch((err) => {
-      dispatch(loadingAuth(false));
       console.log(err);
+      callback('error', 'Se presentó un error creando tu cuenta');
+      dispatch(loadingAuth(false));
     });
   };
 };
@@ -87,7 +95,7 @@ export const registerRequest = (payload) => {
 export const loginRequest = ({
   email,
   password,
-}) => {
+}, callback) => {
   return (dispatch) => {
     dispatch(loadingAuth(true));
     axios.post('/auth/sign-in', {}, {
@@ -105,13 +113,13 @@ export const loginRequest = ({
       dispatch(loadingAuth(false));
     }).catch((err) => {
       console.log(err);
+      callback('Credenciales inválidas');
       dispatch(loadingAuth(false));
-      console.log(err);
     });
   };
 };
 
-export const loadAvailableProducts = (payload) => {
+export const loadAvailableProducts = (callback) => {
   return (dispatch) => {
     dispatch(resetProducts());
     dispatch(deleteCart());
@@ -124,11 +132,13 @@ export const loadAvailableProducts = (payload) => {
       })
       .catch((err) => {
         console.log(err);
+        dispatch(stopLoading());
+        callback('No fue posible cargar los productos');
       });
   };
 };
 
-export const loadInvoices = (payload) => {
+export const loadInvoices = (callback) => {
   return (dispatch) => {
     dispatch(resetSystem());
     axios.get('/api/products')
@@ -163,10 +173,14 @@ export const loadInvoices = (payload) => {
           })
           .catch((err) => {
             console.log(err);
+            dispatch(stopLoading());
+            callback('No fue posible cargar las estadísticas');
           });
       })
       .catch((err) => {
         console.log(err);
+        dispatch(stopLoading());
+        callback('No fue posible cargar las estadísticas');
       });
   };
 };
@@ -175,21 +189,24 @@ export const makePayment = ({
   cartTotalPrice,
   cartItems,
   creationDate,
-}) => {
+}, callback) => {
   return (dispatch) => {
     dispatch(startPayment());
     axios.post('/api/invoices', {
-      cartTotalPrice,
-      cartItems,
-      creationDate,
-    })
+        cartTotalPrice,
+        cartItems,
+        creationDate,
+      })
       .then(({
         data,
       }) => {
         dispatch(endPayment());
+        callback('success', 'Factura generada de forma exitosa');
         dispatch(loadAvailableProducts());
       })
       .catch((err) => {
+        dispatch(stopLoading());
+        callback('error', 'No fue posible generar la factura');
         console.log(err);
       });
   };
