@@ -88,3 +88,7 @@ button:disabled {
   margin: 1rem 0;
   border: 1px solid $third-color;
 }
+
+.react-toast-notifications__container {
+  width: unset !important;
+}
