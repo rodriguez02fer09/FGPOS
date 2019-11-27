@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
 import { connect } from 'react-redux';
+import { useToasts } from 'react-toast-notifications';
 import { registerRequest } from '../actions';
 import '../assets/styles/containers/Register.scss';
 
@@ -10,6 +11,12 @@ const Register = ({ registerRequest, loadingAuth, history }) => {
     password: '',
   });
 
+  const { addToast } = useToasts();
+
+  const showAlert = (type, message) => {
+    addToast(message, { appearance: type });
+  };
+
   const handleInput = (event) => {
     setValues({
       ...form,
@@ -19,7 +26,7 @@ const Register = ({ registerRequest, loadingAuth, history }) => {
 
   const handleSubmit = (event) => {
     event.preventDefault();
-    registerRequest(form);
+    registerRequest(form, showAlert);
   };
 
   return (

@@ -1,5 +1,6 @@
 import React from 'react';
 import { BrowserRouter, Switch, Route } from 'react-router-dom';
+import { ToastProvider } from 'react-toast-notifications';
 import NotFound from '../containers/NotFound';
 import DashboardLayout from '../components/DashboardLayout';
 import MainLayout from '../components/MainLayout';
@@ -13,9 +14,11 @@ const AppRoute = ({ component: Component, layout: Layout, ...rest }) => (
   <Route
     {...rest}
     render={props => (
-      <Layout>
-        <Component {...props} />
-      </Layout>
+      <ToastProvider placement="top-center" autoDismissTimeout={3000} autoDismiss={true}>
+        <Layout>
+          <Component {...props} />
+        </Layout>
+      </ToastProvider>
     )}
   />
 );

@@ -1,5 +1,6 @@
 import React, { useEffect } from 'react';
 import { connect } from 'react-redux';
+import { useToasts } from 'react-toast-notifications';
 import LogOut from '../components/Logout';
 import InvoicesList from '../components/InvoicesList';
 import { loadInvoices } from '../actions';
@@ -7,8 +8,14 @@ import InvoicesStatistics from '../components/InvoicesStatistics';
 import '../assets/styles/components/Invoices.scss';
 
 const Invoices = ({ user, loadInvoices, loading, soldProducts }) => {
+  const { addToast } = useToasts();
+
+  const showError = (message) => {
+    addToast(message, { appearance: 'error' });
+  };
+
   useEffect(() => {
-    loadInvoices();
+    loadInvoices(showError);
   }, [loadInvoices]);
 
   return (
@@ -19,7 +26,7 @@ const Invoices = ({ user, loadInvoices, loading, soldProducts }) => {
           <h3 className="mb-0">
             {user.name}
             {' '}
-                        - Estadísticas
+            - Estadísticas
           </h3>
           <LogOut />
         </div>

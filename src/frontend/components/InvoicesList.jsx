@@ -15,12 +15,11 @@ const InvoicesList = ({ invoices, loading }) => {
   return (
     <>
       {loading && (
-
         <main id="invoicesLoadingContainer">
           <i className="fas fa-spin fa-spinner fa-2x" />
         </main>
       )}
-      {!loading && (
+      {!loading && invoices.length > 0 && (
         <>
           <h3 id="invoicesGeneratedTitle">Facturas generadas</h3>
           <main id="invoicesList">

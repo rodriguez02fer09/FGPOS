@@ -1,12 +1,19 @@
 import React, { useEffect } from 'react';
 import { connect } from 'react-redux';
+import { useToasts } from 'react-toast-notifications';
 import Item from './Item';
 import '../assets/styles/components/ItemsList.scss';
 import { loadAvailableProducts } from '../actions';
 
 const ItemsList = ({ items, loading, loadAvailableProducts }) => {
+  const { addToast } = useToasts();
+
+  const showError = (message) => {
+    addToast(message, { appearance: 'error' });
+  };
+
   useEffect(() => {
-    loadAvailableProducts();
+    loadAvailableProducts(showError);
   }, [loadAvailableProducts]);
 
   return (

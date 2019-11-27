@@ -5,11 +5,7 @@ import '../assets/styles/components/DashboardLayout.scss';
 const DashboardLayout = ({ children }) => (
   <main id="dashboardMainContainer">
     <aside id="dashboardAside">
-      <div id="headerMenuButtonContainer" className="h-6 border-bottom">
-        <button className="dashboard-button button-white" type="button">
-          <i className="fas fa-bars" />
-        </button>
-      </div>
+      <div id="headerMenuButtonContainer" className="h-6 border-bottom" />
       <ul>
         <NavLink to="/sales" activeClassName="active">
           <li>

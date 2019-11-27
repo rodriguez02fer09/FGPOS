@@ -19,6 +19,7 @@ const Sales = ({ user, fullScreenCart }) => {
           </h3>
           <LogOut />
         </div>
+
         <ItemsList available={true} />
       </div>
       <div id="salesCart" className={fullScreenCart ? 'full-screen' : ''}>
