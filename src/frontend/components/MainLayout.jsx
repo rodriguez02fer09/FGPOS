@@ -13,7 +13,7 @@ const MainLayout = ({ children }) => (
         <NavLink to="/register" activeClassName="active">Regístrate</NavLink>
       </div>
     </nav>
-    <div className="layout-container">
+    <main className="layout-container">
       <div className="layout-children text-center">
         {children}
       </div>
@@ -35,12 +35,12 @@ const MainLayout = ({ children }) => (
         </h2>
       </div>
       <hr className="hr-third-color hide-md" />
-    </div>
-    <div className="layout-privacy">
+    </main>
+    <footer className="layout-privacy">
       <a href="/">Términos de uso</a>
       <a href="/">Declaración de privacidad</a>
       <a href="/">Centro de ayuda</a>
-    </div>
+    </footer>
   </>
 );
 
