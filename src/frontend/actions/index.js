@@ -26,7 +26,7 @@ export const resetProducts = payload => ({
 });
 
 export const resetSystem = payload => ({
-  type: 'RESET_SYSTEM'
+  type: 'RESET_SYSTEM',
 });
 
 export const storeLoadedProducts = payload => ({
@@ -146,7 +146,7 @@ export const loadInvoices = (payload) => {
             let investedMoney = 0;
             let earnedMoney = 0;
 
-            products.forEach(product => {
+            products.forEach((product) => {
               totalProducts += product.boughtUnits;
               soldProducts += product.soldUnits;
               investedMoney += product.boughtUnits * product.unitaryPrice;
@@ -158,7 +158,7 @@ export const loadInvoices = (payload) => {
               soldProducts,
               totalProducts,
               investedMoney,
-              earnedMoney
+              earnedMoney,
             }));
           })
           .catch((err) => {
@@ -179,10 +179,10 @@ export const makePayment = ({
   return (dispatch) => {
     dispatch(startPayment());
     axios.post('/api/invoices', {
-        cartTotalPrice,
-        cartItems,
-        creationDate,
-      })
+      cartTotalPrice,
+      cartItems,
+      creationDate,
+    })
       .then(({
         data,
       }) => {

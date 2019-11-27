@@ -7,39 +7,39 @@ import Invoices from '../containers/Invoices';
 
 const serverRoutes = (isLogged) => {
   return [{
-      path: '/',
-      component: isLogged ? Sales : Login,
-      exact: true,
-    },
-    {
-      path: '/sales',
-      component: Sales,
-      exact: true,
-    },
-    {
-      path: '/inventory',
-      component: Inventory,
-      exact: true,
-    },
-    {
-      path: '/invoices',
-      component: Invoices,
-      exact: true,
-    },
-    {
-      path: '/login',
-      component: Login,
-      exact: true,
-    },
-    {
-      path: '/register',
-      component: Register,
-      exact: true,
-    },
-    {
-      name: 'NotFound',
-      component: NotFound,
-    },
+    path: '/',
+    component: isLogged ? Sales : Login,
+    exact: true,
+  },
+  {
+    path: '/sales',
+    component: Sales,
+    exact: true,
+  },
+  {
+    path: '/inventory',
+    component: Inventory,
+    exact: true,
+  },
+  {
+    path: '/invoices',
+    component: Invoices,
+    exact: true,
+  },
+  {
+    path: '/login',
+    component: Login,
+    exact: true,
+  },
+  {
+    path: '/register',
+    component: Register,
+    exact: true,
+  },
+  {
+    name: 'NotFound',
+    component: NotFound,
+  },
   ];
 };
 
