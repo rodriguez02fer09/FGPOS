@@ -71,7 +71,7 @@ const reducer = (state, action) => {
       return {
         ...state,
         showCartCheckoutModal: true,
-        fullScreenCart: false,
+          fullScreenCart: false,
       };
     case 'HIDE_CART_CHECKOUT_MODAL':
       return {
@@ -82,7 +82,7 @@ const reducer = (state, action) => {
       return {
         ...state,
         cartTotalPrice: 0,
-        cartItems: [],
+          cartItems: [],
       };
     case 'START_PAYMENT':
       return {
@@ -93,19 +93,29 @@ const reducer = (state, action) => {
       return {
         ...state,
         makingPayment: false,
-        showCartCheckoutModal: false,
+          showCartCheckoutModal: false,
       };
     case 'RESET_PRODUCTS':
       return {
         ...state,
         loading: true,
-        products: [],
+          products: [],
       };
     case 'STORE_LOADED_PRODUCTS':
       return {
         ...state,
         loading: false,
-        products: action.payload,
+          products: action.payload,
+      };
+    case 'STORE_LOADED_INVOICES':
+      return {
+        ...state,
+        loading: false,
+          invoices: action.payload.invoices,
+          totalProducts: action.payload.totalProducts,
+          soldProducts: action.payload.soldProducts,
+          earnedMoney: action.payload.earnedMoney,
+          investedMoney: action.payload.investedMoney
       };
     case 'LOADING_AUTH':
       return {
@@ -116,7 +126,14 @@ const reducer = (state, action) => {
       return {
         ...state,
         showCartCheckoutModal: false,
-        fullScreenCart: action.payload,
+          fullScreenCart: action.payload,
+      };
+    case 'RESET_SYSTEM':
+      return {
+        ...state,
+        loading: true,
+          products: [],
+          invoices: []
       };
     default:
       return state;

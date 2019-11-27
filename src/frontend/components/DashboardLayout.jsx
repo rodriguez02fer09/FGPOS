@@ -21,9 +21,11 @@ const DashboardLayout = ({ children }) => (
             <i className="fas fa-boxes" />
           </li>
         </NavLink>
-        <li>
-          <i className="fas fa-chart-pie" />
-        </li>
+        <NavLink to="/invoices" activeClassName="active">
+          <li>
+            <i className="fas fa-chart-pie" />
+          </li>
+        </NavLink>
       </ul>
     </aside>
     <div id="interactionContainer">{children}</div>

@@ -16,14 +16,14 @@ const SalesCartCheckoutItem = (props) => {
         {' '}
         {showQuantity && (
           <span>
-(
+            (
             {quantity}
-)
+            )
           </span>
         )}
       </div>
       <div className="cart-checkout-item-price">
-                $
+        $
         {' '}
         {price * quantity}
       </div>
