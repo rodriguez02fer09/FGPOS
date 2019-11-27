@@ -6,13 +6,13 @@ import fgPosMain from '../assets/logos/FGPosMain.png';
 
 const MainLayout = ({ children }) => (
   <>
-    <div className="layout-navbar">
+    <nav className="layout-navbar">
       <img id="fgPosLogo" src={fgPosLogo} alt="FG Pos Logo" />
       <div>
         <NavLink to="/login" activeClassName="active">Inicia sesión</NavLink>
         <NavLink to="/register" activeClassName="active">Regístrate</NavLink>
       </div>
-    </div>
+    </nav>
     <div className="layout-container">
       <div className="layout-children text-center">
         {children}
@@ -23,15 +23,15 @@ const MainLayout = ({ children }) => (
         <h2>
           <span className="color-orange">Maneja</span>
           {' '}
-tu inventario,
+          tu inventario,
           {' '}
           <span className="color-orange">vende</span>
           {' '}
-tus productos y
+          tus productos y
           {' '}
           <span className="color-orange">analiza</span>
           {' '}
-los resultados
+          los resultados
         </h2>
       </div>
       <hr className="hr-third-color hide-md" />
