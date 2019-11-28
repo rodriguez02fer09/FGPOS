@@ -2,7 +2,11 @@ import React from 'react';
 import { connect } from 'react-redux';
 import Modal from 'react-modal';
 import NumberFormat from 'react-number-format';
-import { addToCart } from '../actions';
+import {
+  addToCart,
+  storeCreatedProducts,
+  uptateProductRequest,
+} from '../actions';
 import '../assets/styles/components/ProductCard.scss';
 
 const customStyles = {
@@ -17,6 +21,7 @@ const customStyles = {
 };
 
 Modal.setAppElement('#app');
+
 class ProductCard extends React.Component {
   constructor(props) {
     super(props);
@@ -24,21 +29,32 @@ class ProductCard extends React.Component {
     this.state = {
       // eslint-disable-next-line react/no-unused-state
       modalIsOpen: false,
+      ...props,
     };
 
     this.afterOpenModal = this.afterOpenModal.bind(this);
     this.openModal = this.openModal.bind(this);
     this.closeModal = this.closeModal.bind(this);
+    this.handleInput = this.handleInput.bind(this);
+    this.updateProduct = this.updateProduct.bind(this);
+  }
+
+  handleInput(event) {
+    this.setState({
+      [event.target.name]: event.target.value,
+    });
   }
 
   // eslint-disable-next-line class-methods-use-this
-  createProduct() {
-    console.log('creando producto');
+  createProduct(event) {
+    event.preventDefault();
+    storeCreatedProducts();
   }
 
   // eslint-disable-next-line class-methods-use-this
-  updateProduct() {
-    console.log('update product');
+  updateProduct(event) {
+    event.preventDefault();
+    uptateProductRequest(this.state);
   }
 
   openModal() {
@@ -61,7 +77,7 @@ class ProductCard extends React.Component {
 
   render() {
     const {
-      id,
+      _id,
       image,
       nameProduct,
       boughtUnits,
@@ -76,7 +92,7 @@ class ProductCard extends React.Component {
       <>
         <div
           role="button"
-          tabIndex={id}
+          tabIndex={_id}
           onClick={() => this.openModal()}
           className="ProductCard"
         >
@@ -95,52 +111,72 @@ class ProductCard extends React.Component {
           >
             <section className="inventory_container--form">
               <h2>{nameProduct}</h2>
-              <form>
+              <form className="product_container--form">
+                Nombre del producto
+                <input
+                  name="name"
+                  type="text"
+                  onChange={this.handleInput}
+                  defaultValue={nameProduct}
+                />
                 Descripción
                 <input
-                  htmlFor="description"
+                  name="description"
                   type="textarea"
+                  onChange={this.handleInput}
                   defaultValue={description}
                 />
                 Precio unitario
                 <NumberFormat
-                  htmlFor="unitaryPrice"
+                  name="unitaryPrice"
                   value={unitaryPrice}
+                  onChange={this.handleInput}
                   thousandSeparator={true}
                   prefix="$"
                 />
                 Precio al cliente
                 <NumberFormat
-                  htmlFor="clientPrice"
+                  name="clientPrice"
                   value={clientPrice}
+                  onChange={this.handleInput}
                   thousandSeparator={true}
                   prefix="$"
                 />
                 Unidades Vendidas
                 <input
-                  htmlFor="soldUnits"
+                  name="soldUnits"
                   type="number"
+                  onChange={this.handleInput}
                   defaultValue={soldUnits}
                 />
                 Unidades Compradas
                 <input
-                  htmlFor="boughtUnits"
+                  name="boughtUnits"
                   type="number"
+                  onChange={this.handleInput}
                   defaultValue={boughtUnits}
+                />
+                imagen
+                <input
+                  name="boughtUnits"
+                  type="text"
+                  onChange={this.handleInput}
+                  defaultValue={image}
                 />
                 Activo
                 <input
-                  htmlFor="active"
+                  name="active"
                   type="checkBox"
+                  onChange={this.handleInput}
                   checked={active}
                 />
                 <br />
                 <button
                   className="inventory-cart-button button-success"
                   type="button"
-                  onClick={id ? this.updateProduct() : this.createProduct()}
+                  onClick={_id ? this.updateProduct : this.createProduct}
                 >
-                  {id ? 'Actualizar' : 'Crear Producto'}
+                  {_id !== undefined ? 'Actualizar' : 'Crear Producto'}
                 </button>
                 <button
                   className="inventory-cart-button button-danger"
@@ -160,6 +196,8 @@ class ProductCard extends React.Component {
 
 const mapDispatchToProps = {
   addToCart,
+  storeCreatedProducts,
+  uptateProductRequest,
 };
 
 export default connect(null, mapDispatchToProps)(ProductCard);

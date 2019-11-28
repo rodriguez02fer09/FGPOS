@@ -25,6 +25,16 @@ export const resetProducts = payload => ({
   payload,
 });
 
+export const storeCreatedProducts = payload => ({
+  type: 'CREATE_PRODUCTS',
+  payload,
+});
+
+export const storeUpdateProduct = payload => ({
+  type: 'UPDATE_PRODUCTS',
+  payload,
+});
+
 export const storeLoadedProducts = payload => ({
   type: 'STORE_LOADED_PRODUCTS',
   payload,
@@ -63,56 +73,77 @@ export const defineUser = payload => ({
 export const registerRequest = (payload) => {
   return (dispatch) => {
     dispatch(loadingAuth(true));
-    axios.post('/auth/sign-up', {
-      ...payload,
-    }).then((data) => {
-      dispatch(loadingAuth(false));
-      window.location.href = '/login';
-    }).catch((err) => {
-      dispatch(loadingAuth(false));
-      console.log(err);
+    axios
+      .post('/auth/sign-up', {
+        ...payload,
+      })
+      .then((data) => {
+        dispatch(loadingAuth(false));
+        window.location.href = '/login';
+      })
+      .catch((err) => {
+        dispatch(loadingAuth(false));
+        console.log(err);
+      });
+  };
+};
+
+export const loginRequest = ({ email, password }) => {
+  return (dispatch) => {
+    dispatch(loadingAuth(true));
+    axios
+      .post(
+        '/auth/sign-in',
+        {},
+        {
+          auth: {
+            username: email,
+            password,
+          },
+        },
+      )
+      .then(({ data }) => {
+        console.log(data);
+        document.cookie = `email=${data.email}`;
+        document.cookie = `name=${data.name}`;
+        document.cookie = `id=${data.id}`;
+        window.location.href = '/sales';
+        dispatch(loadingAuth(false));
+      })
+      .catch((err) => {
+        console.log(err);
+        dispatch(loadingAuth(false));
+        console.log(err);
+      });
+  };
+};
+
+export const createProductRequest = (payload) => {
+  return (dispatch) => {
+    dispatch(resetProducts());
+    axios.post('api/products', payload).then(({ data }) => {
+      dispatch(storeCreatedProducts(data.data));
     });
   };
 };
 
-export const loginRequest = ({
-  email,
-  password,
-}) => {
+export const uptateProductRequest = (payload) => {
   return (dispatch) => {
-    dispatch(loadingAuth(true));
-    axios.post('/auth/sign-in', {}, {
-      auth: {
-        username: email,
-        password,
-      },
-    }).then(({
-      data,
-    }) => {
-      console.log(data);
-      document.cookie = `email=${data.email}`;
-      document.cookie = `name=${data.name}`;
-      document.cookie = `id=${data.id}`;
-      window.location.href = '/sales';
-      dispatch(loadingAuth(false));
-    }).catch((err) => {
-      console.log(err);
-      dispatch(loadingAuth(false));
-      console.log(err);
-    });
+    console.log('kkk');
+    axios.put(`/api/products/${payload.id}`, { ...payload })
+      .then(({ data }) => {
+        dispatch(storeUpdateProduct(data.data));
+      });
   };
 };
 
 export const loadAllProducts = (payload) => {
   return (dispatch) => {
     dispatch(resetProducts());
-    axios.get('/api/products')
-      .then(({
-        data,
-      }) => {
-        const products = data.data;
-        dispatch(storeLoadedProducts(products));
-      });
+    axios.get('/api/products').then(({ data }) => {
+      const products = data.data;
+      dispatch(storeLoadedProducts(products));
+    });
   };
 };
 
@@ -120,11 +151,12 @@ export const loadAvailableProducts = (payload) => {
   return (dispatch) => {
     dispatch(resetProducts());
     dispatch(deleteCart());
-    axios.get('/api/products')
-      .then(({
-        data,
-      }) => {
-        const products = data.data.filter(product => product.active && product.units > 0);
+    axios
+      .get('/api/products')
+      .then(({ data }) => {
+        const products = data.data.filter(
+          product => product.active && product.units > 0,
+        );
         dispatch(storeLoadedProducts(products));
       })
       .catch((err) => {
@@ -133,21 +165,16 @@ export const loadAvailableProducts = (payload) => {
   };
 };
 
-export const makePayment = ({
-  cartTotalPrice,
-  cartItems,
-  creationDate,
-}) => {
+export const makePayment = ({ cartTotalPrice, cartItems, creationDate }) => {
   return (dispatch) => {
     dispatch(startPayment());
-    axios.post('/api/invoices', {
-      cartTotalPrice,
-      cartItems,
-      creationDate,
-    })
-      .then(({
-        data,
-      }) => {
+    axios
+      .post('/api/invoices', {
+        cartTotalPrice,
+        cartItems,
+        creationDate,
+      })
+      .then(({ data }) => {
         dispatch(endPayment());
         dispatch(loadAvailableProducts());
       })

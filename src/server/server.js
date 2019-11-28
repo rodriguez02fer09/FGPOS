@@ -117,6 +117,21 @@ app.get('/api/products', async (req, res, next) => {
   }).catch((err) => {
     console.log(err);
   });
+
+  axios({
+    url: `${process.env.API_URL}/api/products/${req.body.id}`,
+    method: 'put',
+    body: req.body,
+    headers: {
+      Authorization: `Bearer ${token}`,
+    },
+  })
+    .then(({ data, status }) => {
+      res.status(status).json(data);
+    })
+    .catch((err) => {
+      console.log(err);
+    });
 });
 
 app.post('/api/invoices', async (req, res, next) => {
